@@ -1,0 +1,31 @@
+.movies {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 1rem;
+	margin: 0 auto;
+}
+
+.add-movies {
+	text-align: center;
+}
+
+.add-movies button {
+	font-size: 1em;
+	padding: 8px;
+	margin: 0 10px 30px 10px;
+}
+
+.movie {
+	// padding: 5px 25ps 10px 25px;
+	// max-width: 25%;
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: space-around;
+	align-items: center;
+}
+
+// .errorMessage {
+// 	margin: auto;
+// 	font-weight: bold;
+// 	color: rgb(161, 15, 15);
+// }

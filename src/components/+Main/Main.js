@@ -7,13 +7,14 @@ import NotFound from "../../pages/+NotFound";
 
 const Main = ({ searchMovies, loading, errorMessage, movies }) => {
 	return (
-		<Switch>
-			<Route exact path='/' component={LandingPage} />
-			<Route path='/search' component={Search} />
-			<Route path='/details/:id' component={MovieDetails} />
-
-			<Route component={NotFound} />
-		</Switch>
+		<main className='container'>
+			<Switch>
+				<Route exact path='/' component={LandingPage} />
+				<Route path='/search' component={Search} />
+				<Route path='/details/:id' component={MovieDetails} />
+				<Route component={NotFound} />
+			</Switch>
+		</main>
 	);
 };
 

@@ -2,13 +2,17 @@ import React from "react";
 import Menu from "../+Navigation";
 
 const Header = ({ text }) => {
+	console.log(window.pageYOffset);
+
 	return (
-		<header className='App-header'>
-			<h2>{text}</h2>
-			<nav>
-				<Menu />
-			</nav>
-		</header>
+		<div className='zone blue sticky'>
+			<header className='main-nav wrapper'>
+				<h2 className='push'>{text}</h2>
+				<nav>
+					<Menu />
+				</nav>
+			</header>
+		</div>
 	);
 };
 

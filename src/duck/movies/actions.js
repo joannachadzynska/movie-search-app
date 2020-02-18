@@ -1,4 +1,4 @@
-import { getMoviesUrl, typeMapping } from "../../utils/config";
+import { getMoviesUrl } from "../../utils/config";
 import { searchMoviesTypes } from "./actionTypes";
 
 export const startFetching = () => ({

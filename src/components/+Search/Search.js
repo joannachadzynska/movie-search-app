@@ -27,15 +27,14 @@ const Search = ({ getMovies, pageNumber, totalResults, movies }) => {
 		if (!movies.movies.length) return;
 		if (pageNum !== 1 && pageNum <= Math.ceil(totalResults / 10)) {
 			setPageNum(pageNum - 1);
-			console.log(pageNum);
 
 			getMovies(searchedValue, typeMapping.search, pageNum);
 		}
 	};
 
 	return (
-		<div className='form'>
-			<form className='search' onSubmit={callSearchFunction}>
+		<div className='search'>
+			<form className='search__form' onSubmit={callSearchFunction}>
 				<input
 					type='text'
 					name='search'
@@ -45,8 +44,10 @@ const Search = ({ getMovies, pageNumber, totalResults, movies }) => {
 				<button>Search</button>
 			</form>
 			<Movies />
-			<button onClick={previousPage}>previous</button>
-			<button onClick={nextPage}>next</button>
+			<div className='search__btns'>
+				<button onClick={previousPage}>previous</button>
+				<button onClick={nextPage}>next</button>
+			</div>
 		</div>
 	);
 };
