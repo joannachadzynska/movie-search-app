@@ -1,0 +1,100 @@
+* {
+	box-sizing: border-box;
+	font-family: Helvetica;
+}
+
+.App {
+	text-align: center;
+	min-height: 100vh;
+}
+
+.App-header {
+	background-color: #282c34;
+	height: 70px;
+	display: flex;
+	padding: 0 1em;
+	align-items: center;
+	justify-content: space-between;
+	font-size: calc(10px + 2vmin);
+	color: white;
+}
+
+.spinner {
+	height: 80px;
+	margin: auto;
+}
+
+/* .App-link {
+	color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+} */
+
+/* movie component */
+.movies {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+
+.add-movies {
+	text-align: center;
+}
+
+.add-movies button {
+	font-size: 1em;
+	padding: 8px;
+	margin: 0 10px 30px 10px;
+}
+
+.movie {
+	padding: 5px 25ps 10px 25px;
+	max-width: 25%;
+}
+
+.errorMessage {
+	margin: auto;
+	font-weight: bold;
+	color: rgb(161, 15, 15);
+}
+
+.search {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+	background-color: #282c34;
+	color: antiquewhite;
+}
+
+.search > input[type="text"] {
+	width: 40%;
+	min-width: 170px;
+}
+@media screen and (min-width: 694px) and (max-width: 915px) {
+	.movie {
+		max-width: 33%;
+	}
+}
+@media screen and (min-width: 625px) and (max-width: 693px) {
+	.movie {
+		max-width: 50%;
+	}
+}
+@media screen and (max-width: 651px) {
+	.movie {
+		max-width: 100%;
+		margin: auto;
+	}
+}
