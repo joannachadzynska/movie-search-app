@@ -5,10 +5,13 @@ const Menu = () => {
 	return (
 		<ul className='menu'>
 			<li>
-				<Link to='/'>Home</Link>
+				<Link to='/search'>Search</Link>
 			</li>
 			<li>
-				<Link to='/search'>Search</Link>
+				<Link to='/watched'>Watched</Link>
+			</li>
+			<li>
+				<Link to='/to-watch'>To watch</Link>
 			</li>
 		</ul>
 	);

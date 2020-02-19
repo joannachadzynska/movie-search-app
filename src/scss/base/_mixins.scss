@@ -1,0 +1,37 @@
+@mixin button($paddingy, $paddingx, $fontSize) {
+	button {
+		border: 2px solid $color-primary;
+		border-radius: 5px;
+		background-color: $color-primary;
+		color: $color-white;
+		cursor: pointer;
+		font-size: $fontSize;
+		font-weight: bold;
+		letter-spacing: 1px;
+		transition: 0.6s;
+		padding: $paddingy $paddingx;
+
+		&:hover {
+			background-color: $color-white;
+			color: $color-primary;
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		&:active {
+			opacity: 0.7;
+		}
+	}
+}
+@mixin vh() {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { getMovies } from "../../duck/movies/actions";
 import Movies from "./Movies";
 import { typeMapping } from "../../utils/config";
+import { FaSearch } from "react-icons/fa";
 
 const Search = ({ getMovies, pageNumber, totalResults, movies }) => {
 	const [pageNum, setPageNum] = useState(1);
@@ -38,10 +39,14 @@ const Search = ({ getMovies, pageNumber, totalResults, movies }) => {
 				<input
 					type='text'
 					name='search'
+					placeholder='Enter search term'
 					value={searchedValue}
 					onChange={(e) => setSearchedValue(e.target.value)}
 				/>
-				<button>Search</button>
+
+				<button>
+					<FaSearch />
+				</button>
 			</form>
 			<Movies />
 			<div className='search__btns'>

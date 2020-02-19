@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getDetails } from "../../duck/details/actions";
-import Ratings from "./Ratings";
+
+import MovieCard from "./MovieCard";
 
 const MovieDetails = ({ getDetails, id, details }) => {
 	useEffect(() => {
@@ -10,19 +11,9 @@ const MovieDetails = ({ getDetails, id, details }) => {
 
 	const { details: movieDetails, loading } = details;
 
-	console.log(movieDetails);
-
 	return (
 		<div className='details'>
-			<h3>movie details</h3>
-			{loading ? (
-				<span>loading...</span>
-			) : (
-				<div className='details-box'>
-					<h3>{movieDetails.Title}</h3>
-					<Ratings ratings={movieDetails.Ratings} />
-				</div>
-			)}
+			{loading ? <span>loading...</span> : <MovieCard movie={movieDetails} />}
 		</div>
 	);
 };

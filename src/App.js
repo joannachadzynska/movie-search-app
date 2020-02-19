@@ -8,7 +8,7 @@ import Footer from "./components/+Footer";
 function App() {
 	return (
 		<Router>
-			<Header text='Movie Search App' />
+			<Header text='MovieInfo' />
 			<Main />
 			<Footer />
 		</Router>
