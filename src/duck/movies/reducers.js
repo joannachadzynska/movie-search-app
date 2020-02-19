@@ -4,7 +4,8 @@ const initState = {
 	loading: false,
 	movies: [],
 	errorMessage: null,
-	totalResults: null
+	totalResults: null,
+	totalPages: null
 };
 
 const movies = (state = initState, { type, payload, error }) => {
@@ -21,9 +22,9 @@ const movies = (state = initState, { type, payload, error }) => {
 				...state,
 				loading: false,
 				errorMessage: null,
-				movies: payload.Search,
-				totalResults: payload.totalResults,
-				pageNumber: state.pageNumber++
+				movies: payload.results,
+				totalResults: payload.total_results,
+				totalPages: payload.total_pages
 			};
 
 		case searchMoviesTypes.SEARCH_MOVIES_FAILURE:

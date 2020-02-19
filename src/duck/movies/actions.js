@@ -1,4 +1,4 @@
-import { getMoviesUrl } from "../../utils/config";
+import { getMoviesUrl, getMovieDBurlSearch } from "../../utils/config";
 import { searchMoviesTypes } from "./actionTypes";
 
 export const startFetching = () => ({
@@ -15,10 +15,10 @@ export const fetchedMoviesError = (payload) => ({
 	payload
 });
 
-export const getMovies = (query, type, page) => (dispatch) => {
+export const getMovies = (query, page) => (dispatch) => {
 	dispatch(startFetching());
 
-	fetch(getMoviesUrl(query, type, page))
+	fetch(getMovieDBurlSearch(query, page))
 		.then((response) => response.json())
 		.then((movies) => dispatch(fetchedMovies(movies)))
 		.catch((error) => dispatch(fetchedMoviesError(error)));

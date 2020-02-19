@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { getMovies } from "../../duck/movies/actions";
 import Movies from "./Movies";
-import { typeMapping } from "../../utils/config";
-import { FaSearch } from "react-icons/fa";
+
 import CustomSearch from "../+CustomSearch/CustomSearch";
 
 const Search = ({ getMovies, pageNumber, totalResults, movies }) => {
@@ -13,7 +12,7 @@ const Search = ({ getMovies, pageNumber, totalResults, movies }) => {
 	const callSearchFunction = (e) => {
 		e.preventDefault();
 		if (!e.target.search.value) return;
-		getMovies(searchedValue, typeMapping.search, pageNum);
+		getMovies(searchedValue, pageNum);
 		e.target.search.value = "";
 	};
 
@@ -21,7 +20,7 @@ const Search = ({ getMovies, pageNumber, totalResults, movies }) => {
 		if (!movies.movies.length) return;
 		if (pageNum <= Math.ceil(totalResults / 10) - 1) {
 			setPageNum(pageNum + 1);
-			getMovies(searchedValue, typeMapping.search, pageNum);
+			getMovies(searchedValue, pageNum);
 		}
 	};
 
@@ -30,7 +29,7 @@ const Search = ({ getMovies, pageNumber, totalResults, movies }) => {
 		if (pageNum !== 1 && pageNum <= Math.ceil(totalResults / 10)) {
 			setPageNum(pageNum - 1);
 
-			getMovies(searchedValue, typeMapping.search, pageNum);
+			getMovies(searchedValue, pageNum);
 		}
 	};
 
@@ -51,14 +50,13 @@ const Search = ({ getMovies, pageNumber, totalResults, movies }) => {
 };
 
 const mapState = ({ movies }) => ({
-	movies: movies,
-	pageNumber: movies.pageNumber,
-	totalResults: movies.totalResults
+	movies: movies
+	// pageNumber: movies.pageNumber,
+	// totalResults: movies.totalResults
 });
 
 const mapDispatch = (dispatch) => ({
-	getMovies: (query, type, pageNumber) =>
-		dispatch(getMovies(query, type, pageNumber))
+	getMovies: (query, pageNumber) => dispatch(getMovies(query, pageNumber))
 });
 
 export default connect(mapState, mapDispatch)(Search);

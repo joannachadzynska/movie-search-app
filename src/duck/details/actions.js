@@ -1,6 +1,10 @@
 import { movieDetailsTypes } from "./actionTypes";
 
-import { getMoviesUrl, typeMapping } from "../../utils/config";
+import {
+	getMoviesUrl,
+	typeMapping,
+	getMovieDBDetailUrl
+} from "../../utils/config";
 
 export const startFetchingDetails = () => ({
 	type: movieDetailsTypes.GET_MOVIE_DETAILS_REQUEST
@@ -18,10 +22,10 @@ export const fetchedDetialsError = (payload) => ({
 	payload
 });
 
-export const getDetails = (query, type = typeMapping.id) => (dispatch) => {
+export const getDetails = (query, type) => (dispatch) => {
 	dispatch(startFetchingDetails());
 
-	fetch(getMoviesUrl(query, type))
+	fetch(getMovieDBDetailUrl(query, type))
 		.then((response) => response.json())
 		.then((data) => dispatch(fetchedDetails(data)));
 };

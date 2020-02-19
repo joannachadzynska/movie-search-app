@@ -4,14 +4,7 @@ import customPoster from "../../assets/images/customPoster.jpg";
 import RatingBox from "../+RatingBox";
 
 const SimilarMovieItem = ({ movie }) => {
-	const {
-		title,
-		release_date: release,
-		overview,
-		backdrop_path,
-		poster_path,
-		id
-	} = movie;
+	const { title, release_date: release, overview, poster_path, id } = movie;
 	const [isChecked, setIsChecked] = useState(false);
 
 	const handleCheckboxChange = (e) => {

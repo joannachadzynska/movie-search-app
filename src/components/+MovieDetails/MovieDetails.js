@@ -1,17 +1,19 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getDetails } from "../../duck/details/actions";
-
+import { typeDetailsByMediaType } from "../../utils/config";
 import MovieCard from "./MovieCard";
 import Spinner from "../+Spinner";
 import Similar from "../+Similar/Similar";
 
 const MovieDetails = ({ getDetails, id, details }) => {
 	useEffect(() => {
-		getDetails(id);
+		getDetails(id, typeDetailsByMediaType.movie);
+		getDetails(id, typeDetailsByMediaType.tv);
 	}, [getDetails, id]);
 
 	const { details: movieDetails, loading } = details;
+	console.log(movieDetails);
 
 	return (
 		<div className='details'>
@@ -30,6 +32,7 @@ const MovieDetails = ({ getDetails, id, details }) => {
 const mapState = (state, ownProps) => {
 	return {
 		details: state.moviesDetails,
+
 		id: ownProps.match.params.id
 	};
 };
