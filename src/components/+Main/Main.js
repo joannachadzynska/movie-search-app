@@ -5,7 +5,7 @@ import Search from "../+Search";
 import MovieDetails from "../+MovieDetails";
 import NotFound from "../../pages/+NotFound";
 
-const Main = ({ searchMovies, loading, errorMessage, movies }) => {
+const Main = () => {
 	return (
 		<main className='container'>
 			<Switch>

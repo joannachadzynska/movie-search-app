@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Movie from "../../+Movie";
+import Spinner from "../../+Spinner";
 
 const Movies = ({ movies }) => {
 	const { movies: moviesList, loading, errorMessage } = movies;
@@ -8,7 +9,7 @@ const Movies = ({ movies }) => {
 	return (
 		<div className='movies'>
 			{loading && !errorMessage ? (
-				<span>loading...</span>
+				<Spinner />
 			) : errorMessage ? (
 				<div className='errorMessage'>{errorMessage}</div>
 			) : (

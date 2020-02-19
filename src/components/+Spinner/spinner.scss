@@ -1,0 +1,18 @@
+.spinner__container {
+	grid-column: 1 / 6;
+}
+
+#steady-spinner {
+	border: 10px solid hsla(185, 100%, 62%, 0.2);
+	border-top-color: #09e;
+	border-radius: 50%;
+	width: 10em;
+	height: 10em;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}

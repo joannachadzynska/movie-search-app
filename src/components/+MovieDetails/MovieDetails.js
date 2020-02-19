@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { getDetails } from "../../duck/details/actions";
 
 import MovieCard from "./MovieCard";
+import Spinner from "../+Spinner";
 
 const MovieDetails = ({ getDetails, id, details }) => {
 	useEffect(() => {
@@ -13,7 +14,7 @@ const MovieDetails = ({ getDetails, id, details }) => {
 
 	return (
 		<div className='details'>
-			{loading ? <span>loading...</span> : <MovieCard movie={movieDetails} />}
+			{loading ? <Spinner /> : <MovieCard movie={movieDetails} />}
 		</div>
 	);
 };

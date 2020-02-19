@@ -1,4 +1,5 @@
 import React from "react";
+import Spinner from "../+Spinner";
 
 const Ratings = ({ ratings }) => {
 	return (
@@ -12,7 +13,7 @@ const Ratings = ({ ratings }) => {
 						</li>
 					))
 				) : (
-					<span>loading...</span>
+					<Spinner />
 				)}
 			</ul>
 		</div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, generatePath } from "react-router-dom";
 import RatingWidget from "../+RatingWidget/RatingWidget";
-import { FaRegCheckSquare } from "react-icons/fa";
+
 import customPoster from "../../assets/images/customPoster.jpg";
 
 const Movie = ({
@@ -27,7 +27,6 @@ const Movie = ({
 				<label>
 					AddToWatchlist
 					<input type='checkbox' name='add-to-watch' id='add-to-watch' />
-					<span></span>
 				</label>
 			</div>
 		</div>

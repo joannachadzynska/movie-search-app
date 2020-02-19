@@ -4,6 +4,7 @@ import { getMovies } from "../../duck/movies/actions";
 import Movies from "./Movies";
 import { typeMapping } from "../../utils/config";
 import { FaSearch } from "react-icons/fa";
+import Spinner from "../+Spinner/Spinner";
 
 const Search = ({ getMovies, pageNumber, totalResults, movies }) => {
 	const [pageNum, setPageNum] = useState(1);
