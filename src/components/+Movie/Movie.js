@@ -4,6 +4,7 @@ import RatingWidget from "../+RatingWidget/RatingWidget";
 import "./movie.scss";
 import customPoster from "../../assets/images/customPoster.jpg";
 import Checkbox from "../+Checkbox/Checkbox";
+import RatingBox from "../+RatingBox";
 
 const Movie = ({
 	movie: { Poster: poster, Title: title, imdbID: id, Year: year, Type: type }
@@ -31,10 +32,10 @@ const Movie = ({
 					Released: {year}, Type: {type}
 				</p>
 
-				<div className='card__rating'>
-					<RatingWidget />
-					<Checkbox checked={isChecked} onChange={handleCheckboxChange} />
-				</div>
+				<RatingBox
+					checked={isChecked}
+					handleCheckboxChange={handleCheckboxChange}
+				/>
 			</div>
 		</div>
 	);
