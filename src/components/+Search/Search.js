@@ -4,6 +4,7 @@ import { getMovies } from "../../duck/movies/actions";
 import Movies from "./Movies";
 import { typeMapping } from "../../utils/config";
 import { FaSearch } from "react-icons/fa";
+import CustomSearch from "../+CustomSearch/CustomSearch";
 
 const Search = ({ getMovies, pageNumber, totalResults, movies }) => {
 	const [pageNum, setPageNum] = useState(1);
@@ -35,19 +36,11 @@ const Search = ({ getMovies, pageNumber, totalResults, movies }) => {
 
 	return (
 		<div className='search'>
-			<form className='search__form' onSubmit={callSearchFunction}>
-				<input
-					type='text'
-					name='search'
-					placeholder='Enter search term'
-					value={searchedValue}
-					onChange={(e) => setSearchedValue(e.target.value)}
-				/>
-
-				<button>
-					<FaSearch />
-				</button>
-			</form>
+			<CustomSearch
+				handleSubmit={callSearchFunction}
+				handleChange={(e) => setSearchedValue(e.target.value)}
+				value={searchedValue}
+			/>
 			<Movies />
 			<div className='search__btns'>
 				<button onClick={previousPage}>previous</button>
