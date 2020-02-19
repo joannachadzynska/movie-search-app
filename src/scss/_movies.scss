@@ -3,7 +3,7 @@
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	grid-gap: 1rem;
-	margin: 0 auto;
+	margin: 0 2rem;
 }
 
 .add-movies {
@@ -14,28 +14,6 @@
 	font-size: 1em;
 	padding: 8px;
 	margin: 0 10px 30px 10px;
-}
-
-// movie
-
-.movie__container {
-	// padding: 5px 25ps 10px 25px;
-	// max-width: 25%;
-	display: flex;
-	flex-flow: column;
-
-	.movie__rating {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-}
-
-.movie-image__container {
-	img {
-		width: auto;
-		height: 200px;
-	}
 }
 
 // .errorMessage {
