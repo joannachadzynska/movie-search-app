@@ -1,6 +1,6 @@
 import React from "react";
 import Ratings from "./Ratings";
-import RatingWidget from "../+RatingWidget/RatingWidget";
+import RatingBox from "../+RatingBox/RatingBox";
 
 const MovieCard = ({
 	movie: {
@@ -31,7 +31,7 @@ const MovieCard = ({
 					<br />
 					<br />
 					<hr />
-					<RatingWidget />
+					<RatingBox />
 				</div>
 				<h4>
 					<Ratings ratings={ratings} />

@@ -4,6 +4,7 @@ import { getDetails } from "../../duck/details/actions";
 
 import MovieCard from "./MovieCard";
 import Spinner from "../+Spinner";
+import Similar from "../+Similar/Similar";
 
 const MovieDetails = ({ getDetails, id, details }) => {
 	useEffect(() => {
@@ -14,7 +15,14 @@ const MovieDetails = ({ getDetails, id, details }) => {
 
 	return (
 		<div className='details'>
-			{loading ? <Spinner /> : <MovieCard movie={movieDetails} />}
+			{loading ? (
+				<Spinner />
+			) : (
+				<>
+					<MovieCard movie={movieDetails} />
+					<Similar id={id} />
+				</>
+			)}
 		</div>
 	);
 };

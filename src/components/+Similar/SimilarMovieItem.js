@@ -1,26 +1,30 @@
 import React, { useState } from "react";
 import { Link, generatePath } from "react-router-dom";
-
-import "./movie.scss";
 import customPoster from "../../assets/images/customPoster.jpg";
-
 import RatingBox from "../+RatingBox";
 
-const Movie = ({
-	movie: { Poster: poster, Title: title, imdbID: id, Year: year, Type: type }
-}) => {
+const SimilarMovieItem = ({ movie }) => {
+	const {
+		title,
+		release_date: release,
+		overview,
+		backdrop_path,
+		poster_path,
+		id
+	} = movie;
 	const [isChecked, setIsChecked] = useState(false);
+
 	const handleCheckboxChange = (e) => {
 		setIsChecked(e.target.checked);
 	};
-	console.log(isChecked);
+	const imgUrl = `http://image.tmdb.org/t/p/w185${poster_path}`;
 
 	return (
 		<div className='card'>
 			<div className='card-image__container'>
 				<Link to={generatePath("/details/:id", { id })}>
 					<img
-						src={poster === "N/A" ? customPoster : poster}
+						src={imgUrl === "N/A" ? customPoster : imgUrl}
 						alt={`The movie titled: ${title}`}
 					/>
 				</Link>
@@ -28,10 +32,8 @@ const Movie = ({
 
 			<div className='card__block'>
 				<h4 className='card__title'>{title}</h4>
-				<p className='card__text'>
-					Released: {year}, Type: {type}
-				</p>
-
+				<p className='card__text'>Released: {release}, Type:</p>
+				{/* <p>{overview}</p> */}
 				<RatingBox
 					checked={isChecked}
 					handleCheckboxChange={handleCheckboxChange}
@@ -41,4 +43,4 @@ const Movie = ({
 	);
 };
 
-export default Movie;
+export default SimilarMovieItem;
