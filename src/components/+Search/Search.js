@@ -4,33 +4,18 @@ import { getMovies } from "../../duck/movies/actions";
 import Movies from "./Movies";
 
 import CustomSearch from "../+CustomSearch/CustomSearch";
+import Pagination from "../+Pagination/Pagination";
 
 const Search = ({ getMovies, totalResults, movies, getMediaType }) => {
-	const [pageNum, setPageNum] = useState(1);
 	const [searchedValue, setSearchedValue] = useState("");
+	const [isSubmited, setIsSubmited] = useState(false);
 
 	const callSearchFunction = (e) => {
 		e.preventDefault();
 		if (!e.target.search.value) return;
-		getMovies(searchedValue, pageNum);
+		getMovies(searchedValue, 1);
+		setIsSubmited(true);
 		e.target.search.value = "";
-	};
-
-	const nextPage = () => {
-		if (!movies.movies.length) return;
-		if (pageNum <= Math.ceil(totalResults / 10) - 1) {
-			setPageNum(pageNum + 1);
-			getMovies(searchedValue, pageNum);
-		}
-	};
-
-	const previousPage = () => {
-		if (!movies.movies.length) return;
-		if (pageNum !== 1 && pageNum <= Math.ceil(totalResults / 10)) {
-			setPageNum(pageNum - 1);
-
-			getMovies(searchedValue, pageNum);
-		}
 	};
 
 	return (
@@ -42,8 +27,10 @@ const Search = ({ getMovies, totalResults, movies, getMediaType }) => {
 			/>
 			<Movies getMediaType={getMediaType} />
 			<div className='search__btns'>
-				<button onClick={previousPage}>previous</button>
-				<button onClick={nextPage}>next</button>
+				{isSubmited && (
+					<Pagination pageNeighbours={2} searchedValue={searchedValue} />
+				)}
+				{/* <Pagination pageNeighbours={2} searchedValue={searchedValue} /> */}
 			</div>
 		</div>
 	);
@@ -51,8 +38,6 @@ const Search = ({ getMovies, totalResults, movies, getMediaType }) => {
 
 const mapState = ({ movies }) => ({
 	movies: movies
-	// pageNumber: movies.pageNumber,
-	// totalResults: movies.totalResults
 });
 
 const mapDispatch = (dispatch) => ({

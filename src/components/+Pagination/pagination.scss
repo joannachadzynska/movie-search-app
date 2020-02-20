@@ -1,0 +1,39 @@
+.pagination {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	list-style: none;
+	max-width: 40%;
+	margin: 0 auto;
+
+	li button {
+		background-color: #fff;
+		border-width: 1px;
+		color: #30336b;
+		border-radius: 0;
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		-ms-border-radius: 0;
+		-o-border-radius: 0;
+
+		&:hover {
+			background-color: #30336b;
+			color: #fff;
+		}
+	}
+
+	li button.active {
+		background-color: lighten(#30336b, 5%);
+		color: #fff;
+
+		&:hover {
+			background-color: darken(#30336b, 10%);
+		}
+	}
+
+	li button.disabled {
+		pointer-events: none;
+		cursor: default;
+		opacity: 0.6;
+	}
+}
