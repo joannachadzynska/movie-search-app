@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Movie from "../../+Movie";
 import Spinner from "../../+Spinner";
 
-const Movies = ({ movies }) => {
+const Movies = ({ movies, getMediaType }) => {
 	const { movies: moviesList, loading, errorMessage } = movies;
 
 	return (
@@ -14,7 +14,11 @@ const Movies = ({ movies }) => {
 				<div className='errorMessage'>{errorMessage}</div>
 			) : (
 				moviesList.map((movie, idx) => (
-					<Movie key={`${idx}-${movie.Title}`} movie={movie} />
+					<Movie
+						key={`${idx}-${movie.Title}`}
+						movie={movie}
+						getMediaType={getMediaType}
+					/>
 				))
 			)}
 		</div>

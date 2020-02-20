@@ -1,4 +1,4 @@
-import { getMoviesUrl, getMovieDBurlSearch } from "../../utils/config";
+import { getMovieDBurlSearch } from "../../utils/config";
 import { searchMoviesTypes } from "./actionTypes";
 
 export const startFetching = () => ({

@@ -5,7 +5,7 @@ import Movies from "./Movies";
 
 import CustomSearch from "../+CustomSearch/CustomSearch";
 
-const Search = ({ getMovies, pageNumber, totalResults, movies }) => {
+const Search = ({ getMovies, totalResults, movies, getMediaType }) => {
 	const [pageNum, setPageNum] = useState(1);
 	const [searchedValue, setSearchedValue] = useState("");
 
@@ -40,7 +40,7 @@ const Search = ({ getMovies, pageNumber, totalResults, movies }) => {
 				handleChange={(e) => setSearchedValue(e.target.value)}
 				value={searchedValue}
 			/>
-			<Movies />
+			<Movies getMediaType={getMediaType} />
 			<div className='search__btns'>
 				<button onClick={previousPage}>previous</button>
 				<button onClick={nextPage}>next</button>

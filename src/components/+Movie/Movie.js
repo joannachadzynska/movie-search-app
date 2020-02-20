@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Link, generatePath } from "react-router-dom";
-
 import "./movie.scss";
 import customPoster from "../../assets/images/customPoster.jpg";
-
 import RatingBox from "../+RatingBox";
+import { setImgUrl } from "../../utils/utils";
 
 const Movie = ({
 	movie: {
@@ -14,21 +13,25 @@ const Movie = ({
 		first_air_date: airDate,
 		poster_path,
 		media_type: type
-	}
+	},
+	getMediaType
 }) => {
 	const [isChecked, setIsChecked] = useState(false);
+
 	const handleCheckboxChange = (e) => {
 		setIsChecked(e.target.checked);
 	};
 
-	const imgUrl = `http://image.tmdb.org/t/p/w185${poster_path}`;
+	const imgUrl = setImgUrl(poster_path);
 
 	return (
 		<div className='card'>
 			<div className='card-image__container'>
-				<Link to={generatePath("/details/:id", { id })}>
+				<Link
+					to={generatePath("/details/:id", { id })}
+					onClick={() => getMediaType(type)}>
 					<img
-						src={imgUrl === "N/A" ? customPoster : imgUrl}
+						src={poster_path === null ? customPoster : imgUrl}
 						alt={`The movie titled: ${title}`}
 					/>
 				</Link>

@@ -3,11 +3,12 @@ import { movieDetailsTypes } from "./actionTypes";
 const initState = {
 	loading: false,
 	details: [],
-	error: ""
+	error: "",
+	credits: []
 };
 
-const moviesDetails = (state = initState, action) => {
-	switch (action.type) {
+const moviesDetails = (state = initState, { type, payload }) => {
+	switch (type) {
 		case movieDetailsTypes.GET_MOVIE_DETAILS_REQUEST:
 			return {
 				...state,
@@ -20,7 +21,7 @@ const moviesDetails = (state = initState, action) => {
 			return {
 				...state,
 				loading: false,
-				details: action.payload
+				details: payload
 			};
 
 		case movieDetailsTypes.GET_MOVIE_DETAILS_FAILURE:
@@ -28,7 +29,29 @@ const moviesDetails = (state = initState, action) => {
 				...state,
 				details: [],
 				loading: false,
-				error: action.payload
+				error: payload
+			};
+
+		case movieDetailsTypes.GET_MOVIE_CREDITS_REQUEST:
+			return {
+				...state,
+				loading: true,
+				error: "",
+				credits: []
+			};
+
+		case movieDetailsTypes.GET_MOVIE_CREDITS_SUCCESS:
+			return {
+				...state,
+				loading: false,
+				credits: payload
+			};
+
+		case movieDetailsTypes.GET_MOVIE_CREDITS_FAILURE:
+			return {
+				...state,
+				error: payload,
+				credits: []
 			};
 
 		default:

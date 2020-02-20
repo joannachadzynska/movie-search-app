@@ -1,25 +1,47 @@
 import { similarMoviesTypes } from "./actionTypes";
-import { getMovieDBurl } from "../../utils/config";
+import { getMovieDBurl, typeDetailsByMediaType } from "../../utils/config";
 
-export const startFetching = () => ({
+const startFetching = () => ({
 	type: similarMoviesTypes.SEARCH_SIMILAR_MOVIES_REQUEST
 });
 
-export const fetchedMovies = (payload) => ({
+const fetchedMovies = (payload) => ({
 	type: similarMoviesTypes.SEARCH_SIMILAR_MOVIES_SUCCESS,
 	payload
 });
 
-export const fetchedMoviesError = (payload) => ({
+const fetchedMoviesError = (payload) => ({
 	type: similarMoviesTypes.SEARCH_SIMILAR_MOVIES_FAILURE,
 	payload
 });
 
-export const getSimilarMovies = (query, page) => (dispatch) => {
+export const getSimilarMovies = (type, query, page) => (dispatch) => {
 	dispatch(startFetching());
 
-	fetch(getMovieDBurl(query, page))
+	fetch(getMovieDBurl(type, query, page))
 		.then((response) => response.json())
 		.then((movies) => dispatch(fetchedMovies(movies)));
+	// .catch((error) => dispatch(fetchedMoviesError(error)));
+};
+
+// get similar tv shows
+
+const getSimilarTvStart = () => ({
+	type: similarMoviesTypes.SEARCH_SIMILAR_TVSHOWS_REQUEST
+});
+const getSimilarTvSuccess = (payload) => ({
+	type: similarMoviesTypes.SEARCH_SIMILAR_TVSHOWS_SUCCESS,
+	payload
+});
+const getSimilarTvFailure = (payload) => ({
+	type: similarMoviesTypes.SEARCH_SIMILAR_TVSHOWS_FAILURE,
+	payload
+});
+export const getSimilarTvShows = (type, query, page) => (dispatch) => {
+	dispatch(getSimilarTvStart());
+
+	fetch(getMovieDBurl(type, query, page))
+		.then((response) => response.json())
+		.then((tv) => dispatch(getSimilarTvSuccess(tv)));
 	// .catch((error) => dispatch(fetchedMoviesError(error)));
 };

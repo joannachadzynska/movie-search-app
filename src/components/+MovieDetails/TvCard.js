@@ -1,32 +1,33 @@
 import React from "react";
-import RatingBox from "../+RatingBox/RatingBox";
-import customPoster from "../../assets/images/customPoster.jpg";
+import RatingBox from "../+RatingBox";
 import { setImgUrl } from "../../utils/utils";
+import customPoster from "../../assets/images/customPoster.jpg";
 
-const MovieCard = ({
-	movie: {
-		name: title,
-		release_date: released,
-		last_air_date: airDate,
+const TvCard = ({
+	tv: {
+		name,
+		first_air_date: released,
 		vote_average: rating,
 		poster_path: poster,
 		overview: plot,
-		genres
-	},
-	crew
+		genres,
+		homepage,
+		created_by: creators,
+		number_of_episodes: episodesNum,
+		number_of_seasons: seasonsNum
+	}
 }) => {
 	const imgUrl = setImgUrl(poster);
 
-	const setMovieDirector = () => {
-		if (crew === undefined) return;
-		let directors = crew.filter((person) => person.job === "Director");
-		let directorName = directors
-			.map((dir) => dir.name)
+	const setTvCreators = () => {
+		if (!creators) return;
+		let creatorsList = creators
+			.map((creator) => creator.name)
 			.toString()
 			.split(",")
 			.join(", ");
 
-		return directorName;
+		return creatorsList;
 	};
 
 	return (
@@ -42,11 +43,14 @@ const MovieCard = ({
 			<div className='movie-details__info'>
 				<h2>movie details</h2>
 				<div className='movie-details_box'>
-					<h1>{title}</h1>
-					<small>Released Date: {released ? released : airDate}</small>
+					<h1>{name}</h1>
+					<small>Released Date: {released}</small>
 					<br />
-					<small>Director: {setMovieDirector()}</small>
+					<small>Created by: {setTvCreators()} </small>
 					<br />
+					<small>
+						Seasons: {seasonsNum}, Episodes: {episodesNum}{" "}
+					</small>
 					<br />
 					<hr />
 					<RatingBox />
@@ -61,4 +65,4 @@ const MovieCard = ({
 	);
 };
 
-export default MovieCard;
+export default TvCard;

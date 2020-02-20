@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import LandingPage from "../../pages/+LandingPage";
 import Search from "../+Search";
@@ -6,12 +6,24 @@ import MovieDetails from "../+MovieDetails";
 import NotFound from "../../pages/+NotFound";
 
 const Main = () => {
+	const [mediaType, setMediaType] = useState(null);
+
+	const getMediaType = (type) => {
+		setMediaType(type);
+	};
+
 	return (
 		<main className='container'>
 			<Switch>
 				<Route exact path='/' component={LandingPage} />
-				<Route path='/search' component={Search} />
-				<Route path='/details/:id' component={MovieDetails} />
+				<Route
+					path='/search'
+					render={(props) => <Search {...props} getMediaType={getMediaType} />}
+				/>
+				<Route
+					path='/details/:id'
+					render={(props) => <MovieDetails {...props} mediaType={mediaType} />}
+				/>
 				<Route component={NotFound} />
 			</Switch>
 		</main>
