@@ -5,10 +5,17 @@ import {
 	getSimilarTvShows
 } from "../../duck/similar/actions";
 import Spinner from "../+Spinner";
-import SimilarMoviesList from "./SimilarMoviesList";
+import SimilarMoviesList from "./Movies";
 import { typeDetailsByMediaType } from "../../utils/config";
+import SimilarTvShowsList from "./TvShows";
 
-const Similar = ({ id, getSimilarMovies, similar, mediaType }) => {
+const Similar = ({
+	id,
+	getSimilarMovies,
+	getSimilarTvShows,
+	similar,
+	mediaType
+}) => {
 	const [pageNum, setPageNum] = useState(1);
 
 	useEffect(() => {
@@ -17,21 +24,25 @@ const Similar = ({ id, getSimilarMovies, similar, mediaType }) => {
 		} else if (mediaType === "tv") {
 			getSimilarTvShows(typeDetailsByMediaType.tv, id, pageNum);
 		}
-	}, [getSimilarMovies, id, pageNum, mediaType]);
+	}, [getSimilarMovies, getSimilarTvShows, id, pageNum, mediaType]);
 
 	const { loading, similarMovies, tv } = similar;
+	console.log(mediaType);
 
 	return (
 		<div className='similar'>
-			<h2>Similar {mediaType}</h2>
 			{loading ? (
 				<Spinner />
 			) : mediaType === "movie" ? (
-				<SimilarMoviesList movies={similarMovies} />
+				<>
+					<h2>Similar movies</h2>
+					<SimilarMoviesList movies={similarMovies} type={mediaType} />
+				</>
 			) : mediaType === "tv" ? (
-				<h1>tv similar</h1>
-			) : mediaType === "person" ? (
-				<h1>person similar</h1>
+				<>
+					<h2>Similar tvshows</h2>
+					<SimilarTvShowsList tv={tv} type={mediaType} />
+				</>
 			) : null}
 		</div>
 	);

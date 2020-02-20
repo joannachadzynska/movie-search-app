@@ -1,11 +1,11 @@
 import React from "react";
-import SimilarMovieItem from "./SimilarMovieItem";
+import Card from "../../+Card";
 
-const SimilarMoviesList = ({ movies }) => {
+const SimilarMoviesList = ({ movies, type }) => {
 	return (
 		<div className='movies'>
 			{movies.map((movie) => (
-				<SimilarMovieItem key={movie.id} movie={movie} />
+				<Card key={movie.id} mediaType={movie} type={type} />
 			))}
 		</div>
 	);
