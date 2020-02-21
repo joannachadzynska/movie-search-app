@@ -4,7 +4,7 @@ import RatingBox from "../+RatingBox";
 import { setImgUrl } from "../../utils/utils";
 import customPoster from "../../assets/images/customPoster.jpg";
 
-const Card = ({ mediaType, type }) => {
+const Card = ({ mediaType, type, getMediaType, isInSearchComponent }) => {
 	const {
 		id,
 		poster_path: poster,
@@ -23,7 +23,13 @@ const Card = ({ mediaType, type }) => {
 	return (
 		<div className='card'>
 			<div className='card-image__container'>
-				<Link to={generatePath("/details/:id", { id })}>
+				<Link
+					to={generatePath("/details/:id", { id })}
+					onClick={
+						isInSearchComponent
+							? () => getMediaType(type)
+							: () => console.log("similar item")
+					}>
 					<img
 						src={poster === null ? customPoster : imgUrl}
 						alt={`The movie titled: ${title}`}

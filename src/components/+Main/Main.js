@@ -18,7 +18,13 @@ const Main = () => {
 				<Route exact path='/' component={LandingPage} />
 				<Route
 					path='/search'
-					render={(props) => <Search {...props} getMediaType={getMediaType} />}
+					render={(props) => (
+						<Search
+							{...props}
+							getMediaType={getMediaType}
+							mediaType={mediaType}
+						/>
+					)}
 				/>
 				<Route
 					path='/details/:id'

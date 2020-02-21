@@ -6,7 +6,8 @@ const initState = {
 	similarMovies: [],
 	tv: [],
 	totalPages: null,
-	totalResults: null
+	totalResults: null,
+	currentPage: null
 };
 
 const similarReducer = (state = initState, { type, payload }) => {
@@ -26,7 +27,8 @@ const similarReducer = (state = initState, { type, payload }) => {
 				error: "",
 				similarMovies: payload.results,
 				totalPages: payload.total_pages,
-				totalResults: payload.total_results
+				totalResults: payload.total_results,
+				currentPage: payload.page
 			};
 
 		case similarMoviesTypes.SEARCH_SIMILAR_MOVIES_FAILURE:
@@ -49,7 +51,8 @@ const similarReducer = (state = initState, { type, payload }) => {
 				loading: false,
 				tv: payload.results,
 				totalPages: payload.total_pages,
-				totalResults: payload.total_results
+				totalResults: payload.total_results,
+				currentPage: payload.page
 			};
 
 		case similarMoviesTypes.SEARCH_SIMILAR_TVSHOWS_FAILURE:

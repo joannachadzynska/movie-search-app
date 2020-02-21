@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Movie from "../../+Movie";
 import Spinner from "../../+Spinner";
 
-const Movies = ({ movies, getMediaType }) => {
+const ModelsFound = ({ movies, getMediaType, type }) => {
 	const { movies: moviesList, loading, errorMessage } = movies;
 
 	return (
@@ -13,12 +13,8 @@ const Movies = ({ movies, getMediaType }) => {
 			) : errorMessage ? (
 				<div className='errorMessage'>{errorMessage}</div>
 			) : (
-				moviesList.map((movie, idx) => (
-					<Movie
-						key={`${idx}-${movie.Title}`}
-						movie={movie}
-						getMediaType={getMediaType}
-					/>
+				moviesList.map((movie) => (
+					<Movie key={movie.id} movie={movie} getMediaType={getMediaType} />
 				))
 			)}
 		</div>
@@ -27,4 +23,4 @@ const Movies = ({ movies, getMediaType }) => {
 
 const mapState = ({ movies }) => ({ movies });
 
-export default connect(mapState, null)(Movies);
+export default connect(mapState, null)(ModelsFound);

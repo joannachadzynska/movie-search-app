@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import {
 	getSimilarMovies,
@@ -8,6 +8,7 @@ import Spinner from "../+Spinner";
 import SimilarMoviesList from "./Movies";
 import { typeDetailsByMediaType } from "../../utils/config";
 import SimilarTvShowsList from "./TvShows";
+import Pagination from "../+Pagination/Pagination";
 
 const Similar = ({
 	id,
@@ -16,18 +17,15 @@ const Similar = ({
 	similar,
 	mediaType
 }) => {
-	const [pageNum, setPageNum] = useState(1);
+	const { loading, similarMovies, tv } = similar;
 
 	useEffect(() => {
 		if (mediaType === "movie") {
-			getSimilarMovies(typeDetailsByMediaType.movie, id, pageNum);
+			getSimilarMovies(typeDetailsByMediaType.movie, id, 1);
 		} else if (mediaType === "tv") {
-			getSimilarTvShows(typeDetailsByMediaType.tv, id, pageNum);
+			getSimilarTvShows(typeDetailsByMediaType.tv, id, 1);
 		}
-	}, [getSimilarMovies, getSimilarTvShows, id, pageNum, mediaType]);
-
-	const { loading, similarMovies, tv } = similar;
-	console.log(mediaType);
+	}, [getSimilarMovies, getSimilarTvShows, id, mediaType]);
 
 	return (
 		<div className='similar'>
@@ -37,11 +35,13 @@ const Similar = ({
 				<>
 					<h2>Similar movies</h2>
 					<SimilarMoviesList movies={similarMovies} type={mediaType} />
+					<Pagination searchedValue={id} type={mediaType} isInSimilar />
 				</>
 			) : mediaType === "tv" ? (
 				<>
 					<h2>Similar tvshows</h2>
 					<SimilarTvShowsList tv={tv} type={mediaType} />
+					<Pagination searchedValue={id} type={mediaType} isInSimilar />
 				</>
 			) : null}
 		</div>

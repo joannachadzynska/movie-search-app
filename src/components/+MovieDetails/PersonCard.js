@@ -41,10 +41,6 @@ const PersonCard = ({
 				</div>
 				<h4>{/* <Ratings ratings={ratings} /> */}</h4>
 				<p>{biography}</p>
-				{/* <div className='movie-details__tags-container'>
-      {genre &&
-        genre.split(", ").map((gen) => <span key={gen}>{gen}</span>)}
-    </div> */}
 			</div>
 		</div>
 	);
