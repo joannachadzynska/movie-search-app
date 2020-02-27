@@ -1,6 +1,7 @@
 import React from "react";
 import customPoster from "../../assets/images/customPoster.jpg";
 import { setProfileImgUrl } from "../../utils/utils";
+import RatingBox from "../+RatingBox";
 
 const PersonCard = ({
 	card: {
@@ -37,7 +38,7 @@ const PersonCard = ({
 					<br />
 					<br />
 					<hr />
-					{/* <RatingBox /> */}
+					<RatingBox />
 				</div>
 				<h4>{/* <Ratings ratings={ratings} /> */}</h4>
 				<p>{biography}</p>

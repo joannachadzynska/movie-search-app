@@ -1,9 +1,10 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import Movie from "../../+Movie";
 import Spinner from "../../+Spinner";
 
-const ModelsFound = ({ movies, getMediaType, type }) => {
+const ModelsFound = ({ getMediaType }) => {
+	const movies = useSelector((state) => state.movies);
 	const { movies: moviesList, loading, errorMessage } = movies;
 
 	return (
@@ -21,6 +22,4 @@ const ModelsFound = ({ movies, getMediaType, type }) => {
 	);
 };
 
-const mapState = ({ movies }) => ({ movies });
-
-export default connect(mapState, null)(ModelsFound);
+export default ModelsFound;

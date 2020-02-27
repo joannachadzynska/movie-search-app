@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { addToFavorite } from "../../duck/favorite/actions";
+
 import "./movie.scss";
 import customPoster from "../../assets/images/customPoster.jpg";
 import RatingBox from "../+RatingBox";
@@ -19,11 +18,9 @@ const Movie = ({
 		media_type: type
 	},
 	movie,
-	getMediaType,
-	addToFavorite
+	getMediaType
 }) => {
 	const [isChecked, setIsChecked] = useState(false);
-
 	const handleCheckboxChange = (e) => {
 		setIsChecked(e.target.checked);
 	};
@@ -100,8 +97,9 @@ const Movie = ({
 			<div className='card__block'>
 				<h4 className='card__title'>{setCardName()}</h4>
 				{setCardText(type)}
-				<button onClick={() => addToFavorite(movie)}>Add to fav</button>
+
 				<RatingBox
+					item={movie}
 					checked={isChecked}
 					handleCheckboxChange={handleCheckboxChange}
 				/>
@@ -110,8 +108,4 @@ const Movie = ({
 	);
 };
 
-const mapDispatch = (dispatch) => ({
-	addToFavorite: (item) => dispatch(addToFavorite(item))
-});
-
-export default connect(null, mapDispatch)(Movie);
+export default Movie;

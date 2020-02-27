@@ -5,7 +5,7 @@ import ModelsFound from "./ModelsFound";
 import CustomSearch from "../+CustomSearch/CustomSearch";
 import Pagination from "../+Pagination/Pagination";
 
-const Search = ({ getMovies, getMediaType, mediaType, movies }) => {
+const Search = ({ getMovies, getMediaType, mediaType }) => {
 	const [searchedValue, setSearchedValue] = useState("");
 	const [isSubmited, setIsSubmited] = useState(false);
 
@@ -34,12 +34,8 @@ const Search = ({ getMovies, getMediaType, mediaType, movies }) => {
 	);
 };
 
-const mapState = ({ movies }) => ({
-	movies: movies
-});
-
 const mapDispatch = (dispatch) => ({
 	getMovies: (query, pageNumber) => dispatch(getMovies(query, pageNumber))
 });
 
-export default connect(mapState, mapDispatch)(Search);
+export default connect(null, mapDispatch)(Search);

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { getDetails, getMovieCast } from "../../duck/details/actions";
 import { typeDetailsByMediaType } from "../../utils/config";
 import MovieCard from "./MovieCard";
@@ -8,28 +8,21 @@ import Similar from "../+Similar/Similar";
 import PersonCard from "./PersonCard";
 import TvCard from "./TvCard";
 
-const MovieDetails = ({
-	getDetails,
-	id,
-	details,
-	mediaType,
-	getMovieCast,
-	crew,
-	match,
-	history
-}) => {
+const MovieDetails = ({ id, details, mediaType, crew }) => {
+	const dispatch = useDispatch();
+
 	const { details: movieDetails, loading } = details;
 
 	useEffect(() => {
 		if (mediaType === "movie") {
-			getDetails(id, typeDetailsByMediaType.movie);
-			getMovieCast(id);
+			dispatch(getDetails(id, typeDetailsByMediaType.movie));
+			dispatch(getMovieCast(id));
 		} else if (mediaType === "tv") {
-			getDetails(id, typeDetailsByMediaType.tv);
+			dispatch(getDetails(id, typeDetailsByMediaType.tv));
 		} else if (mediaType === "person") {
-			getDetails(id, typeDetailsByMediaType.person);
+			dispatch(getDetails(id, typeDetailsByMediaType.person));
 		}
-	}, [id, getDetails, getMovieCast, mediaType]);
+	}, [id, dispatch, mediaType]);
 
 	return (
 		<div className='details'>
@@ -64,9 +57,4 @@ const mapState = (state, ownProps) => {
 	};
 };
 
-const mapDispatch = (dispatch) => ({
-	getDetails: (query, type) => dispatch(getDetails(query, type)),
-	getMovieCast: (movieId) => dispatch(getMovieCast(movieId))
-});
-
-export default connect(mapState, mapDispatch)(MovieDetails);
+export default connect(mapState, null)(React.memo(MovieDetails));
