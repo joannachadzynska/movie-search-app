@@ -1,14 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 import App from "./App";
-import store from "./duck/store";
+import { store, persistor } from "./duck/store";
 import "./scss/main.scss";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App />
+		<PersistGate persistor={persistor}>
+			<App />
+		</PersistGate>
 	</Provider>,
 	document.getElementById("root")
 );

@@ -50,6 +50,7 @@ const moviesDetails = (state = initState, { type, payload }) => {
 		case movieDetailsTypes.GET_MOVIE_CREDITS_FAILURE:
 			return {
 				...state,
+				loading: false,
 				error: payload,
 				credits: []
 			};

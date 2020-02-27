@@ -14,8 +14,12 @@ const MovieDetails = ({
 	details,
 	mediaType,
 	getMovieCast,
-	crew
+	crew,
+	match,
+	history
 }) => {
+	const { details: movieDetails, loading } = details;
+
 	useEffect(() => {
 		if (mediaType === "movie") {
 			getDetails(id, typeDetailsByMediaType.movie);
@@ -25,9 +29,7 @@ const MovieDetails = ({
 		} else if (mediaType === "person") {
 			getDetails(id, typeDetailsByMediaType.person);
 		}
-	}, [getDetails, id, mediaType, getMovieCast]);
-
-	const { details: movieDetails, loading } = details;
+	}, [id, getDetails, getMovieCast, mediaType]);
 
 	return (
 		<div className='details'>
@@ -46,9 +48,7 @@ const MovieDetails = ({
 					{mediaType === "person" ? (
 						<span>not a film or tv </span>
 					) : (
-						<>
-							<Similar id={id} mediaType={mediaType} />
-						</>
+						<Similar id={id} mediaType={mediaType} />
 					)}
 				</>
 			)}

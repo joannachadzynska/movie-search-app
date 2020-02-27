@@ -8,7 +8,6 @@ import Spinner from "../+Spinner";
 import SimilarMoviesList from "./Movies";
 import { typeDetailsByMediaType } from "../../utils/config";
 import SimilarTvShowsList from "./TvShows";
-import Pagination from "../+Pagination/Pagination";
 
 const Similar = ({
 	id,
@@ -17,7 +16,7 @@ const Similar = ({
 	similar,
 	mediaType
 }) => {
-	const { loading, similarMovies, tv } = similar;
+	const { loading, similarMovies, tv, currentPage } = similar;
 
 	useEffect(() => {
 		if (mediaType === "movie") {
@@ -35,13 +34,51 @@ const Similar = ({
 				<>
 					<h2>Similar movies</h2>
 					<SimilarMoviesList movies={similarMovies} type={mediaType} />
-					<Pagination searchedValue={id} type={mediaType} isInSimilar />
+					<button
+						onClick={() =>
+							getSimilarMovies(
+								typeDetailsByMediaType.movie,
+								id,
+								currentPage - 1
+							)
+						}>
+						Previous
+					</button>
+					<button
+						onClick={() =>
+							getSimilarMovies(
+								typeDetailsByMediaType.movie,
+								id,
+								currentPage + 1
+							)
+						}>
+						Next
+					</button>
 				</>
 			) : mediaType === "tv" ? (
 				<>
 					<h2>Similar tvshows</h2>
 					<SimilarTvShowsList tv={tv} type={mediaType} />
-					<Pagination searchedValue={id} type={mediaType} isInSimilar />
+					<button
+						onClick={() =>
+							getSimilarMovies(
+								typeDetailsByMediaType.movie,
+								id,
+								currentPage - 1
+							)
+						}>
+						Previous
+					</button>
+					<button
+						onClick={() =>
+							getSimilarMovies(
+								typeDetailsByMediaType.movie,
+								id,
+								currentPage + 1
+							)
+						}>
+						Next
+					</button>
 				</>
 			) : null}
 		</div>

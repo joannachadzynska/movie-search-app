@@ -12,7 +12,6 @@ const Movie = ({
 		name,
 		release_date: release,
 		first_air_date: airDate,
-
 		poster_path,
 		profile_path,
 		media_type: type
@@ -77,12 +76,12 @@ const Movie = ({
 		}
 	};
 
+	const link = `/details/${id}`;
+
 	return (
 		<div className='card'>
 			<div className='card-image__container'>
-				<Link
-					to={generatePath("/details/:id", { id })}
-					onClick={() => getMediaType(type)}>
+				<Link to={link} onClick={() => getMediaType(type)}>
 					<img
 						src={
 							poster_path === null || profile_path === null

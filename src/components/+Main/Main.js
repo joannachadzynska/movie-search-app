@@ -27,6 +27,7 @@ const Main = () => {
 					)}
 				/>
 				<Route
+					exact
 					path='/details/:id'
 					render={(props) => <MovieDetails {...props} mediaType={mediaType} />}
 				/>
