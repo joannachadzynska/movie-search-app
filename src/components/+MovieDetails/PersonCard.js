@@ -10,9 +10,9 @@ const PersonCard = ({
 		place_of_birth: birthPlace,
 		profile_path: profile,
 		biography,
-		popularity,
 		known_for_department
-	}
+	},
+	card
 }) => {
 	const profileImg = setProfileImgUrl(profile);
 
@@ -38,7 +38,7 @@ const PersonCard = ({
 					<br />
 					<br />
 					<hr />
-					<RatingBox />
+					<RatingBox item={card} />
 				</div>
 				<h4>{/* <Ratings ratings={ratings} /> */}</h4>
 				<p>{biography}</p>

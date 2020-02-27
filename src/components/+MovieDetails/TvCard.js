@@ -15,7 +15,8 @@ const TvCard = ({
 		created_by: creators,
 		number_of_episodes: episodesNum,
 		number_of_seasons: seasonsNum
-	}
+	},
+	tv
 }) => {
 	const imgUrl = setImgUrl(poster);
 
@@ -53,7 +54,7 @@ const TvCard = ({
 					</small>
 					<br />
 					<hr />
-					<RatingBox />
+					<RatingBox item={tv} />
 				</div>
 				<h4>Rating: {rating} / 10</h4>
 				<p>{plot && plot.substr(0, 350)}</p>

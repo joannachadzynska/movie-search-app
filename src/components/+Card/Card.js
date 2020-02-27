@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, generatePath } from "react-router-dom";
 import RatingBox from "../+RatingBox";
 import { setImgUrl } from "../../utils/utils";
@@ -12,11 +12,6 @@ const Card = ({ mediaType, type, getMediaType, isInSearchComponent }) => {
 		release_date: release,
 		first_air_date: airDate
 	} = mediaType;
-	const [isChecked, setIsChecked] = useState(false);
-
-	const handleCheckboxChange = (e) => {
-		setIsChecked(e.target.checked);
-	};
 
 	const imgUrl = setImgUrl(poster);
 
@@ -43,10 +38,7 @@ const Card = ({ mediaType, type, getMediaType, isInSearchComponent }) => {
 					Released: {release ? release : airDate}, Type: {type}
 				</p>
 
-				<RatingBox
-					checked={isChecked}
-					handleCheckboxChange={handleCheckboxChange}
-				/>
+				<RatingBox item={mediaType} />
 			</div>
 		</div>
 	);

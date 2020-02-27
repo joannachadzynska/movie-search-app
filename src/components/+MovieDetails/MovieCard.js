@@ -13,7 +13,8 @@ const MovieCard = ({
 		overview: plot,
 		genres
 	},
-	crew
+	crew,
+	movie
 }) => {
 	const imgUrl = setImgUrl(poster);
 
@@ -28,6 +29,8 @@ const MovieCard = ({
 
 		return directorName;
 	};
+
+	const movieItem = { movie, crew };
 
 	return (
 		<div className='movie-details__container'>
@@ -49,7 +52,7 @@ const MovieCard = ({
 					<br />
 					<br />
 					<hr />
-					<RatingBox />
+					<RatingBox item={movieItem} />
 				</div>
 				<h4>Rating: {rating} / 10</h4>
 				<p>{plot && plot.substr(0, 350)}</p>
