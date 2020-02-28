@@ -11,6 +11,7 @@ import {
 } from "../../duck/toWatch/actions";
 import Rating from "react-rating";
 import Checkbox from "../+Checkbox";
+import { FaTrashAlt } from "react-icons/fa";
 
 const RatingBox = ({ item, userRating }) => {
 	const dispatch = useDispatch();
@@ -32,7 +33,6 @@ const RatingBox = ({ item, userRating }) => {
 	};
 
 	const favorites = useSelector((state) => state.favorites.watched);
-	console.log(userRating);
 
 	if (isChecked) {
 		dispatch(addToWatchlist({ id: item.id ? item.id : uid(10), item: item }));
@@ -50,8 +50,11 @@ const RatingBox = ({ item, userRating }) => {
 			/>
 
 			{favorites.some((el) => el.rating === userRating) ? (
-				<button onClick={() => dispatch(removeFromFavorites(item))}>
-					usuń
+				<button
+					onClick={() => dispatch(removeFromFavorites(item))}
+					style={{ border: "none" }}
+					aria-label='remove button with trash icon inside'>
+					<FaTrashAlt size='1.5em' className='delete-btn' />
 				</button>
 			) : (
 				<Checkbox checked={isChecked} onChange={handleCheckboxChange} />
