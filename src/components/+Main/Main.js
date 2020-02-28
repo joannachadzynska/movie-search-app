@@ -3,6 +3,8 @@ import { Switch, Route } from "react-router-dom";
 import LandingPage from "../../pages/+LandingPage";
 import Search from "../+Search";
 import MovieDetails from "../+MovieDetails";
+import Favorite from "../../pages/+Favorite";
+import Watchlist from "../../pages/+Watchlist";
 import NotFound from "../../pages/+NotFound";
 
 const Main = () => {
@@ -31,6 +33,8 @@ const Main = () => {
 					path='/details/:id'
 					render={(props) => <MovieDetails {...props} mediaType={mediaType} />}
 				/>
+				<Route path='/favorite' component={Favorite} />
+				<Route path='/watchlist' component={Watchlist} />
 				<Route component={NotFound} />
 			</Switch>
 		</main>

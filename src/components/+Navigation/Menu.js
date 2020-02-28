@@ -8,10 +8,10 @@ const Menu = () => {
 				<Link to='/search'>Search</Link>
 			</li>
 			<li>
-				<Link to='/watched'>Watched</Link>
+				<Link to='/favorite'>Favorite</Link>
 			</li>
 			<li>
-				<Link to='/to-watch'>To watch</Link>
+				<Link to='/watchlist'>Watchlist</Link>
 			</li>
 		</ul>
 	);

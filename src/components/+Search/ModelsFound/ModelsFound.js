@@ -5,6 +5,7 @@ import Spinner from "../../+Spinner";
 
 const ModelsFound = ({ getMediaType }) => {
 	const movies = useSelector((state) => state.movies);
+
 	const { movies: moviesList, loading, errorMessage } = movies;
 
 	return (

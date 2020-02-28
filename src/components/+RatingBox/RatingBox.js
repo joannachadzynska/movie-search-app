@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addToFavorite } from "../../duck/favorite/actions";
+import uid from "uid";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	addToFavorite,
+	removeFromFavorites
+} from "../../duck/favorite/actions";
 import {
 	addToWatchlist,
 	removeFromWatchlist
@@ -8,22 +12,30 @@ import {
 import Rating from "react-rating";
 import Checkbox from "../+Checkbox";
 
-const RatingBox = ({ item }) => {
+const RatingBox = ({ item, userRating }) => {
 	const dispatch = useDispatch();
 	const [rating, setRating] = useState(0);
 	const [isChecked, setIsChecked] = useState(false);
 
 	const handleRating = (rating) => {
-		dispatch(addToFavorite({ id: item.id, item: item, rating: rating }));
+		dispatch(
+			addToFavorite({
+				id: item.id ? item.id : uid(10),
+				item: item,
+				rating: rating
+			})
+		);
 	};
 
 	const handleCheckboxChange = (e) => {
 		setIsChecked(e.target.checked);
-		// dispatch(addToWatchlist({ id: item.id, item: item }))
 	};
 
+	const favorites = useSelector((state) => state.favorites.watched);
+	console.log(userRating);
+
 	if (isChecked) {
-		dispatch(addToWatchlist({ id: item.id, item: item }));
+		dispatch(addToWatchlist({ id: item.id ? item.id : uid(10), item: item }));
 	} else {
 		dispatch(removeFromWatchlist(item));
 	}
@@ -34,9 +46,16 @@ const RatingBox = ({ item }) => {
 				fractions={2}
 				onClick={handleRating}
 				onChange={setRating}
-				initialRating={rating}
+				initialRating={userRating ? userRating : rating}
 			/>
-			<Checkbox checked={isChecked} onChange={handleCheckboxChange} />
+
+			{favorites.some((el) => el.rating === userRating) ? (
+				<button onClick={() => dispatch(removeFromFavorites(item))}>
+					usuń
+				</button>
+			) : (
+				<Checkbox checked={isChecked} onChange={handleCheckboxChange} />
+			)}
 		</div>
 	);
 };

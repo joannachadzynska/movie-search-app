@@ -14,6 +14,11 @@ const favoriteReducer = (state = initState, { type, payload }) => {
 				]
 			});
 
+		case favoriteTypes.REMOVE_FROM_FAVORITES:
+			return Object.assign({}, state, {
+				watched: [...state.watched.filter((item) => item.id !== payload.id)]
+			});
+
 		default:
 			return state;
 	}

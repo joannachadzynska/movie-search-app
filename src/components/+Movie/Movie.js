@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
 import "./movie.scss";
 import customPoster from "../../assets/images/customPoster.jpg";
 import RatingBox from "../+RatingBox";
@@ -18,15 +18,29 @@ const Movie = ({
 		media_type: type
 	},
 	movie,
-	getMediaType
+	getMediaType,
+	rating
 }) => {
-	const [isChecked, setIsChecked] = useState(false);
-	const handleCheckboxChange = (e) => {
-		setIsChecked(e.target.checked);
-	};
-
+	let userRating;
 	let image;
 	let cardName;
+
+	const favorites = useSelector((state) => state.favorites.watched);
+
+	const setRating = () => {
+		if (favorites.some((el) => el.id === id)) {
+			const fav = favorites
+				.filter((el) => el.id === id)
+				.map((el) => el.rating)
+				.toString();
+
+			userRating = Number(fav);
+		} else {
+			userRating = rating;
+		}
+
+		return userRating;
+	};
 
 	const setImgType = () => {
 		if (type === "movie") {
@@ -98,11 +112,7 @@ const Movie = ({
 				<h4 className='card__title'>{setCardName()}</h4>
 				{setCardText(type)}
 
-				<RatingBox
-					item={movie}
-					checked={isChecked}
-					handleCheckboxChange={handleCheckboxChange}
-				/>
+				<RatingBox userRating={setRating()} item={movie} />
 			</div>
 		</div>
 	);
