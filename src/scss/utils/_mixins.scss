@@ -35,3 +35,24 @@
 	position: absolute;
 	width: 1px;
 }
+
+%btn {
+	display: inline-block;
+	border-radius: 5px;
+	padding: 8px 20px;
+	margin: 3px;
+
+	&:hover {
+		transform: scale(0.95);
+		-webkit-transform: scale(0.95);
+		-moz-transform: scale(0.95);
+		-ms-transform: scale(0.95);
+		-o-transform: scale(0.95);
+	}
+}
+
+%menuLink {
+	color: $color-white;
+	cursor: pointer;
+	text-decoration: none;
+}
