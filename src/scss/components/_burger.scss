@@ -1,6 +1,6 @@
 .burger {
-	height: 100px;
-	width: 100px;
+	height: 90px;
+	width: 90px;
 	border-color: $color-primary;
 	border-radius: 8px;
 	background-color: mix($color-primary, $color-pink, 10%);
@@ -12,6 +12,11 @@
 
 	&:hover {
 		background-color: mix($color-primary, $color-pink, 30%);
+		transform: scale(0.95);
+		-webkit-transform: scale(0.95);
+		-moz-transform: scale(0.95);
+		-ms-transform: scale(0.95);
+		-o-transform: scale(0.95);
 	}
 
 	@include mediaQuery(md) {
