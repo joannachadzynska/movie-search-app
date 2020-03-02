@@ -2,29 +2,46 @@
 	background-image: url(../../assets/images/landing-page-large.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
-
 	text-align: center;
-	// min-height: calc(100vh - 108px - 44px);
 	height: 100%;
 	width: 100%;
 
 	&__content {
-		font-size: calc(10px + 2vmin);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		width: 100%;
+
+		// font-size: calc(10px + 2vmin);
 
 		h1 {
-			font-size: 2em;
+			font-size: 1.175em;
 			margin: 0;
 			padding: 0;
+
+			@include mediaQuery(sm) {
+				font-size: calc(1.175em + 2vmin);
+			}
 		}
 
 		p {
 			font-size: 0.75em;
+			@include mediaQuery(sm) {
+				font-size: calc(0.75em + 2vmin);
+			}
 		}
 
 		a {
 			@extend %btn;
 			@extend %menuLink;
 			@include set-background($color-pink);
+			font-size: 2rem;
+			@include mediaQuery(md) {
+				font-size: calc(2rem + 2vmin);
+				padding: 12px 25px;
+			}
 		}
 	}
 
@@ -33,11 +50,4 @@
 	// 	background-size: cover;
 
 	// }
-}
-
-@media only screen and (max-width: 600px) {
-	.landing-page {
-		font-size: 0.5em;
-		padding: 0;
-	}
 }

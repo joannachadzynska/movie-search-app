@@ -8,6 +8,7 @@
 html,
 body {
 	font-family: $font-primary;
+	width: 100%;
 	// max-width: 1024px;
 	// line-height: 1.5;
 }
@@ -25,11 +26,12 @@ body {
 @import "./movies";
 
 .wrapper {
-	margin: 0 2rem;
+	// margin: 0 3rem;
+	padding: 0 1rem;
 
-	// @include mediaQuery(sm) {
-	// 	margin: 0 3rem;
-	// }
+	@include mediaQuery(sm) {
+		margin: 0 auto;
+	}
 
 	@include mediaQuery(md) {
 		margin: 0 auto;

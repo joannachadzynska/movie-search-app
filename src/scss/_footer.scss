@@ -1,10 +1,14 @@
 footer {
 	grid-area: footer;
-	background-color: #30336b;
 	text-align: center;
-	padding: 10px;
-
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	p {
-		font-size: 1rem;
+		font-size: 1.125rem;
+
+		@include mediaQuery(xs) {
+			font-size: calc(10px + 2vmin);
+		}
 	}
 }
