@@ -4,32 +4,37 @@
 @import "./utils/functions";
 @import "./base/typography";
 @import "./components/burger";
+
+html,
+body {
+	font-family: $font-primary;
+	// max-width: 1024px;
+	// line-height: 1.5;
+}
+
+@import "./base/layout";
 @import "./header";
-@import "./landingPage";
+@import "./main";
 @import "./footer";
+@import "./pages/landingPage";
+
 @import "./pages/search";
 @import "./components/ratingWidget";
 @import "./components/ratings";
 @import "./components/movieDetails";
 @import "./movies";
 
-body {
-	font-family: $font-primary;
-	// max-width: 1024px;
-	margin: 0 auto;
-	line-height: 1.5;
-}
-
-main {
-	min-height: calc(100vh - 20px - 1rem - 100px);
-	// display: flex;
-	// align-items: center;
-	// justify-content: center;
-}
-
 .wrapper {
-	margin: 0 auto;
-	max-width: 960px;
+	margin: 0 2rem;
+
+	// @include mediaQuery(sm) {
+	// 	margin: 0 3rem;
+	// }
+
+	@include mediaQuery(md) {
+		margin: 0 auto;
+		max-width: 960px;
+	}
 }
 
 .delete-btn {
@@ -45,8 +50,6 @@ main {
 }
 
 .container {
-	background-color: $color-primary;
-	color: $color-white;
 	font-size: 2em;
 	transition: all 0.3s linear;
 
@@ -60,4 +63,9 @@ main {
 		box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
 			inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
 	}
+}
+
+.blue {
+	background-color: $color-primary;
+	color: $font-color-white;
 }

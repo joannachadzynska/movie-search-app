@@ -15,7 +15,7 @@ const Main = () => {
 	};
 
 	return (
-		<main className='container'>
+		<main className='container main'>
 			<Switch>
 				<Route exact path='/' component={LandingPage} />
 				<Route

@@ -23,11 +23,11 @@
 			max-width: 100%;
 		}
 
-		@include button(8px, 12px, 1.125rem);
+		// @include button(8px, 12px, 1.125rem);
 	}
 
 	&__btns {
-		@include button(10px, 15px, 1rem);
+		// @include button(10px, 15px, 1rem);
 	}
 }
 

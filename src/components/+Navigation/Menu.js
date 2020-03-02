@@ -7,20 +7,17 @@ const Menu = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const setOpenMenu = () => {
 		setIsOpen(!isOpen);
-	};
-
-	const setMenu = () => {
-		let menu;
-		if (window.innerWidth < 768) {
-			menu = <Burger setOpenMenu={setOpenMenu} isOpen={isOpen} />;
-		} else {
-			menu = <Links />;
+		if (window.innerWidth >= 800) {
+			setIsOpen(false);
 		}
-
-		return menu;
 	};
 
-	return <ul className='main__menu'>{setMenu()}</ul>;
+	return (
+		<div className='main__menu'>
+			<Links isOpen={isOpen} />
+			<Burger setOpenMenu={setOpenMenu} isOpen={isOpen} />
+		</div>
+	);
 };
 
 export default Menu;

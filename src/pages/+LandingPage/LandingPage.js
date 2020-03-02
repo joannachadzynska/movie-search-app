@@ -1,16 +1,19 @@
 import React from "react";
-import imgBig from "../../assets/images/landing-page-large.jpg";
+
 import { Link } from "react-router-dom";
 
 const LandingPage = () => {
 	return (
 		<div className='landing-page'>
-			<img className='cover' src={imgBig} alt='movie tape' />
-			<div className='coverText'>
-				<h1>Making the world a better place</h1>
-				<button>
-					<Link to='/search'>Start Searching</Link>
-				</button>
+			<div className='landing-page__content wrapper p-1'>
+				<h1 className='landing-page__title'>Hi! Start searching movies!</h1>
+				<p className='my-1'>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, porro?
+				</p>
+
+				<Link to='/search' className='landing-page__btn button'>
+					Start Searching
+				</Link>
 			</div>
 		</div>
 	);

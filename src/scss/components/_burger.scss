@@ -1,58 +1,100 @@
-.burger-menu {
+.burger {
+	height: 100px;
+	width: 100px;
+	border-color: $color-primary;
+	border-radius: 8px;
+	background-color: mix($color-primary, $color-pink, 10%);
+
 	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
+	justify-content: center;
 	align-items: center;
-	width: 3rem;
-	height: 3rem;
+	transition: 0.3s ease-in-out;
+
+	&:hover {
+		background-color: mix($color-primary, $color-pink, 30%);
+	}
+
+	@include mediaQuery(md) {
+		display: none;
+	}
+}
+
+.burger-menu {
+	width: 60px;
+	height: 45px;
 	position: relative;
 
-	div {
+	// @include mediaQuery(xs) {
+	// 	width: 1em;
+	// 	height: 1em;
+	// }
+	// @include mediaQuery(sm) {
+	// 	width: 3rem;
+	// 	height: 1rem;
+	// }
+
+	@include mediaQuery(md) {
+		display: none;
+	}
+
+	span {
+		display: block;
 		background-color: $color-white;
 		border-radius: 9px;
 		width: 100%;
 		height: 5px;
-
 		position: absolute;
 		left: 0;
-
 		transform: rotate(0deg);
-
 		transition: 0.25s ease-in-out;
 	}
 
-	div:nth-child(1) {
+	span:nth-child(1) {
 		top: 0;
 	}
 
-	div:nth-child(2),
-	div:nth-child(3) {
+	span:nth-child(2),
+	span:nth-child(3) {
 		top: 18px;
 	}
 
-	div:nth-child(4) {
+	span:nth-child(4) {
 		top: 36px;
 	}
 }
 
 .burger-menu.open {
-	div:nth-child(1) {
+	span:nth-child(1) {
 		top: 18px;
 		width: 0%;
 		left: 50%;
 	}
 
-	div:nth-child(2) {
+	span:nth-child(2) {
 		transform: rotate(45deg);
 	}
 
-	div:nth-child(3) {
+	span:nth-child(3) {
 		transform: rotate(-45deg);
 	}
 
-	div:nth-child(4) {
+	span:nth-child(4) {
 		top: 18px;
 		width: 0%;
 		left: 50%;
 	}
 }
+
+// .burger {
+// 	position: relative;
+// }
+
+// .burger__circle {
+// 	background-color: #fff;
+// 	width: 100%;
+// 	height: 100%;
+// 	position: absolute;
+// 	border-radius: 50%;
+// 	transform: scale(1);
+// 	z-index: 1000;
+// }

@@ -8,9 +8,11 @@ import Footer from "./components/+Footer";
 function App() {
 	return (
 		<Router>
-			<Header text='MovieInfo' />
-			<Main />
-			<Footer />
+			<div className='layout'>
+				<Header text='MovieInfo' />
+				<Main />
+				<Footer />
+			</div>
 		</Router>
 	);
 }

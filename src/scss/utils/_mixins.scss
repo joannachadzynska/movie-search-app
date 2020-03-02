@@ -1,30 +1,45 @@
-@mixin button($paddingy, $paddingx, $fontSize) {
-	button {
-		border: 2px solid $color-primary;
-		border-radius: 5px;
-		background-color: $color-primary;
-		color: $color-white;
-		cursor: pointer;
-		font-size: $fontSize;
-		font-weight: bold;
-		letter-spacing: 1px;
-		transition: 0.6s;
-		padding: $paddingy $paddingx;
+// @mixin button($paddingy, $paddingx, $fontSize) {
+// 	button {
+// 		border: 2px solid $color-primary;
+// 		border-radius: 5px;
+// 		background-color: $color-primary;
+// 		color: $color-white;
+// 		cursor: pointer;
+// 		font-size: $fontSize;
+// 		font-weight: bold;
+// 		letter-spacing: 1px;
+// 		transition: 0.6s;
+// 		padding: $paddingy $paddingx;
 
-		&:hover {
-			background-color: $color-white;
-			color: $color-primary;
-		}
+// 		&:hover {
+// 			background-color: $color-white;
+// 			color: $color-primary;
+// 		}
 
-		&:focus {
-			outline: none;
-		}
+// 		&:focus {
+// 			outline: none;
+// 		}
 
-		&:active {
-			opacity: 0.7;
-		}
+// 		&:active {
+// 			opacity: 0.7;
+// 		}
+// 	}
+// }
+
+@function set-text-color($color) {
+	@if (lightness($color) > 70) {
+		@return $font-color-black;
+	} @else {
+		@return $font-color-white;
 	}
 }
+
+// Set background & text color
+@mixin set-background($color) {
+	background-color: $color;
+	color: set-text-color($color);
+}
+
 @mixin vh() {
 	border: 0;
 	clip: rect(0 0 0 0);
@@ -41,6 +56,7 @@
 	border-radius: 5px;
 	padding: 8px 20px;
 	margin: 3px;
+	transition: 0.3s ease-in-out;
 
 	&:hover {
 		transform: scale(0.95);
@@ -48,6 +64,7 @@
 		-moz-transform: scale(0.95);
 		-ms-transform: scale(0.95);
 		-o-transform: scale(0.95);
+		background-color: darken($color-pink, 10%);
 	}
 }
 
@@ -55,4 +72,46 @@
 	color: $color-white;
 	cursor: pointer;
 	text-decoration: none;
+}
+
+$breakpoints: (
+	xs: (
+		min-width: 460px
+	),
+	sm: (
+		min-width: 640px
+	),
+	md: (
+		min-width: 800px
+	),
+	lg: (
+		min-width: 1024px
+	),
+	xl: (
+		min-width: 1200px
+	),
+	xxl: (
+		min-width: 1440px
+	)
+);
+
+@mixin mediaQuery($breakpoint) {
+	$size: map-get($breakpoints, $breakpoint);
+
+	@if ($size) {
+		@media #{$size} {
+			@content;
+		}
+	} @else {
+		// @media (min-width: $value) {
+		// 	@content;
+		// }
+		@warn 'bad breakpoint';
+	}
+}
+
+%flexCenter {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }

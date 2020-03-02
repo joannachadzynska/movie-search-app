@@ -5,8 +5,8 @@ import Menu from "../+Navigation";
 const Header = ({ text }) => {
 	return (
 		// <div className='zone blue sticky'>
-		<div className='container'>
-			<header className='header__main wrapper p-1'>
+		<div className='container blue header'>
+			<header className='header__main wrapper'>
 				<div className='header__logo'>
 					<Link to='/'>{text}</Link>
 				</div>

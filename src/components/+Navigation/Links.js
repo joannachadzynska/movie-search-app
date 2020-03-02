@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Links = () => {
+const Links = ({ isOpen }) => {
 	return (
-		<>
+		<ul className={isOpen ? "show main__links" : "main__links hide"}>
 			<li>
 				<NavLink exact to='/search' activeClassName='active'>
 					Search
@@ -19,7 +19,7 @@ const Links = () => {
 					Watchlist
 				</NavLink>
 			</li>
-		</>
+		</ul>
 	);
 };
 
