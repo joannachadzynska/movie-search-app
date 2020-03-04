@@ -34,8 +34,19 @@ body {
 	}
 
 	@include mediaQuery(md) {
-		margin: 0 auto;
 		max-width: 960px;
+	}
+
+	@include mediaQuery(xl) {
+		max-width: 1024px;
+	}
+
+	@include mediaQuery(xxl) {
+		max-width: 1200px;
+	}
+
+	@include mediaQuery(xxxl) {
+		max-width: 1400px;
 	}
 }
 

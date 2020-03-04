@@ -1,20 +1,35 @@
 // movies
 .movies {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	grid-gap: 1rem;
-	margin: 0 2rem;
+	grid-template-columns: 1fr;
+	grid-gap: 1.5rem;
+
+	@include mediaQuery(sm) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@include mediaQuery(lg) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@include mediaQuery(xl) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	@include mediaQuery(xl) {
+		grid-template-columns: repeat(5, 1fr);
+	}
 }
 
-.add-movies {
-	text-align: center;
-}
+// .add-movies {
+// 	text-align: center;
+// }
 
-.add-movies button {
-	font-size: 1em;
-	padding: 8px;
-	margin: 0 10px 30px 10px;
-}
+// .add-movies button {
+// 	font-size: 1em;
+// 	padding: 8px;
+// 	margin: 0 10px 30px 10px;
+// }
 
 // .errorMessage {
 // 	margin: auto;
