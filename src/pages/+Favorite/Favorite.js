@@ -3,9 +3,12 @@ import { useSelector } from "react-redux";
 import CustomSearch from "../../components/+CustomSearch";
 import Movie from "../../components/+Movie";
 import { isSearched, isSearchedByType } from "../../utils/utils";
+import { Redirect } from "react-router-dom";
 
 const Favorite = () => {
 	const favorites = useSelector((state) => state.favorites.watched);
+	const user = useSelector((state) => state.user);
+	const { email } = user.data;
 
 	const [searchTerm, setSearchTerm] = useState("");
 	const [isSelectMedia, setIsSelectMedia] = useState(false);
@@ -92,14 +95,20 @@ const Favorite = () => {
 				<option value='name'>Name</option>
 			</select>
 
-			<div className='movies'>
-				{favorites !== undefined &&
-					favorites
-						.filter(searched())
-						.map((fav) => (
-							<Movie key={fav.id} movie={fav.item} rating={fav.rating} />
-						))}
-			</div>
+			{email ? (
+				<div className='movies'>
+					{favorites !== undefined &&
+						favorites
+							.filter(searched())
+							.map((fav) => (
+								<Movie key={fav.id} movie={fav.item} rating={fav.rating} />
+							))}
+				</div>
+			) : (
+				<Redirect to='/sign-in'>
+					Please sign in to add items to favorites
+				</Redirect>
+			)}
 		</div>
 	);
 };

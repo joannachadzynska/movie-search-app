@@ -5,7 +5,9 @@ import Search from "../+Search";
 import MovieDetails from "../+MovieDetails";
 import Favorite from "../../pages/+Favorite";
 import Watchlist from "../../pages/+Watchlist";
+import SignIn from "../../pages/+SignIn";
 import NotFound from "../../pages/+NotFound";
+// import PrivateRoute from "../+PrivateRoute/PrivateRoute";
 
 const Main = () => {
 	const [mediaType, setMediaType] = useState(null);
@@ -16,8 +18,10 @@ const Main = () => {
 
 	return (
 		<main className='container main py-2'>
+			{/* <PrivateRoute/> */}
 			<Switch>
 				<Route exact path='/' component={LandingPage} />
+				{/* <PrivateRoute path='/' component={LandingPage} /> */}
 				<Route
 					path='/search'
 					render={(props) => (
@@ -35,6 +39,7 @@ const Main = () => {
 				/>
 				<Route path='/favorite' component={Favorite} />
 				<Route path='/watchlist' component={Watchlist} />
+				<Route path='/sign-in' component={SignIn} />
 				<Route component={NotFound} />
 			</Switch>
 		</main>

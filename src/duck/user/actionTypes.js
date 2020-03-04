@@ -1,0 +1,5 @@
+export const userTypes = {
+	USER_LOGIN_START: "[user] USER_LOGIN_START",
+	USER_LOGIN_SUCCESS: "[user] USER_LOGIN_SUCCESS",
+	USER_LOGIN_FAILURE: "[user] USER_LOGIN_FAILURE"
+};
