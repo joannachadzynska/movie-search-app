@@ -6,6 +6,7 @@ import MovieDetails from "../+MovieDetails";
 import Favorite from "../../pages/+Favorite";
 import Watchlist from "../../pages/+Watchlist";
 import SignIn from "../../pages/+SignIn";
+import SignUp from "../../pages/+SignUp";
 import NotFound from "../../pages/+NotFound";
 // import PrivateRoute from "../+PrivateRoute/PrivateRoute";
 
@@ -40,6 +41,7 @@ const Main = () => {
 				<Route path='/favorite' component={Favorite} />
 				<Route path='/watchlist' component={Watchlist} />
 				<Route path='/sign-in' component={SignIn} />
+				<Route path='/sign-up' component={SignUp} />
 				<Route component={NotFound} />
 			</Switch>
 		</main>

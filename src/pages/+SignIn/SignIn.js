@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { userSignIn } from "../../duck/user/actions";
+import { Link } from "react-router-dom";
+import Links from "../../components/+Navigation/Links";
 
 const SignIn = () => {
 	const [email, setEmail] = useState("");
@@ -49,6 +51,9 @@ const SignIn = () => {
 						Sign in
 					</button>
 				</form>
+				<h2>
+					Don't have an account? <Link to='sign-up'>Register here</Link>
+				</h2>
 			</div>
 		</div>
 	);

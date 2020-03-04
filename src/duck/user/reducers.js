@@ -13,6 +13,11 @@ const userReducer = (state = initState, { type, payload }) => {
 				loading: false,
 				data: payload
 			};
+		case userTypes.USER_LOGOUT:
+			return {
+				...state,
+				data: null
+			};
 
 		default:
 			return state;
