@@ -1,14 +1,15 @@
 .search__form {
 	display: grid;
-	grid-template-columns: 90% 10%;
+	grid-template-columns: 1fr auto;
 	width: 100%;
 	z-index: 1;
 
 	.search__input {
 		border: 2px solid $color-primary;
-		// min-width: 170px;
+		min-width: 170px;
 		padding: 10px 15px;
 		font-size: 1rem;
+		max-width: 100%;
 	}
 
 	.search__btn {
@@ -17,6 +18,5 @@
 		color: set-text-color($color-primary);
 		padding: 0;
 		margin: 0;
-		position: relative;
 	}
 }

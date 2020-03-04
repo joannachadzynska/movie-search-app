@@ -13,18 +13,6 @@ body {
 	// line-height: 1.5;
 }
 
-@import "./base/layout";
-@import "./header";
-@import "./main";
-@import "./footer";
-@import "./pages/landingPage";
-@import "./components/customSearch";
-@import "./pages/search";
-@import "./components/ratingWidget";
-@import "./components/ratings";
-@import "./components/movieDetails";
-@import "./movies";
-
 .wrapper {
 	// margin: 0 3rem;
 	padding: 0 1rem;
@@ -49,6 +37,20 @@ body {
 		max-width: 1400px;
 	}
 }
+
+@import "./base/layout";
+@import "./header";
+@import "./main";
+@import "./footer";
+@import "./pages/landingPage";
+@import "./components/customSearch";
+@import "./pages/search";
+@import "./components/card";
+@import "./components/pagination";
+@import "./components/ratingWidget";
+@import "./components/ratings";
+@import "./components/movieDetails";
+@import "./movies";
 
 .delete-btn {
 	color: $color-red;

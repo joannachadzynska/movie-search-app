@@ -2,8 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { getMovies } from "../../duck/movies/actions";
 
-import "./pagination.scss";
-
 const Pagination = ({
 	searchedValue,
 	// pageNeighbours = 0,

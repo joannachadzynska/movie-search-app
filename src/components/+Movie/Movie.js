@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import "./movie.scss";
+
 import customPoster from "../../assets/images/customPoster.jpg";
 import RatingBox from "../+RatingBox";
 import { setImgUrl, setProfileImgUrl } from "../../utils/utils";
@@ -94,7 +94,7 @@ const Movie = ({
 	const link = `/details/${id}`;
 
 	return (
-		<div className='card'>
+		<div className='card m-1'>
 			<div className='card-image__container'>
 				<Link to={link} onClick={() => getMediaType(type)}>
 					<img

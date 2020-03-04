@@ -7,19 +7,14 @@
 	margin: 0 auto;
 
 	li button {
-		background-color: #fff;
+		@extend %btn;
 		border-width: 1px;
-		color: #30336b;
+
 		border-radius: 0;
 		-webkit-border-radius: 0;
 		-moz-border-radius: 0;
 		-ms-border-radius: 0;
 		-o-border-radius: 0;
-
-		&:hover {
-			background-color: #30336b;
-			color: #fff;
-		}
 	}
 
 	li button.active {
