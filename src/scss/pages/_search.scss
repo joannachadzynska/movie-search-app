@@ -1,34 +1,10 @@
 .search {
-	display: grid;
-	grid-template-rows: auto 1fr auto;
-	grid-gap: 1rem;
-	text-align: center;
-	margin: 1rem 0;
-
-	&__form {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: center;
-		align-items: center;
-		margin-top: 10px;
-
-		input[type="text"] {
-			border: 2px solid $color-primary;
-			width: 40%;
-			min-width: 170px;
-			padding: 10px 15px;
-			font-size: 1rem;
-			margin-right: 1rem;
-			max-width: 100%;
-		}
-
-		// @include button(8px, 12px, 1.125rem);
-	}
-
-	&__btns {
-		// @include button(10px, 15px, 1rem);
-	}
+	// display: grid;
+	// grid-template-rows: auto 1fr auto;
+	// grid-gap: 1rem;
+	// text-align: center;
+	// margin: 1rem 0;
+	width: 100%;
 }
 
 // @media screen and (min-width: 694px) and (max-width: 915px) {

@@ -15,7 +15,7 @@ const Main = () => {
 	};
 
 	return (
-		<main className='container main'>
+		<main className='container main py-2'>
 			<Switch>
 				<Route exact path='/' component={LandingPage} />
 				<Route

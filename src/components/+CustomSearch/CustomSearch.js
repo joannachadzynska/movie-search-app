@@ -9,11 +9,12 @@ const CustomSearch = ({ handleSubmit, label, handleChange, ...otherProps }) => {
 				name='search'
 				placeholder='Enter search term'
 				onChange={handleChange}
+				className='search__input'
 				{...otherProps}
 			/>
 
-			<button>
-				<FaSearch />
+			<button className='search__btn'>
+				<FaSearch size='1.5rem' />
 			</button>
 		</form>
 	);

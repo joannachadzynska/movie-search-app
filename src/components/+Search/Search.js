@@ -18,7 +18,7 @@ const Search = ({ getMovies, getMediaType, mediaType }) => {
 	};
 
 	return (
-		<div className='search'>
+		<div className='search wrapper'>
 			<CustomSearch
 				handleSubmit={callSearchFunction}
 				handleChange={(e) => setSearchedValue(e.target.value)}

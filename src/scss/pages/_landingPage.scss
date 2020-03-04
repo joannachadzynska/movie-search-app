@@ -39,15 +39,9 @@
 			@include set-background($color-pink);
 			font-size: 2rem;
 			@include mediaQuery(md) {
-				font-size: calc(2rem + 2vmin);
+				font-size: calc(1rem + 2vmin);
 				padding: 12px 25px;
 			}
 		}
 	}
-
-	// &__bg {
-	// 	background-image: url(../../assets/images/landing-page-large.jpg);
-	// 	background-size: cover;
-
-	// }
 }
