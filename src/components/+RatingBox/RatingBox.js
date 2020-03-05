@@ -12,6 +12,8 @@ import {
 import Rating from "react-rating";
 import Checkbox from "../+Checkbox";
 import { FaTrashAlt } from "react-icons/fa";
+import starGrey from "../../assets/images/star-grey.png";
+import starYellow from "../../assets/images/star-yellow.png";
 
 const RatingBox = ({ item, userRating }) => {
 	const dispatch = useDispatch();
@@ -47,6 +49,10 @@ const RatingBox = ({ item, userRating }) => {
 				onClick={handleRating}
 				onChange={setRating}
 				initialRating={userRating ? userRating : rating}
+				emptySymbol={
+					<img src={starGrey} className='icon' alt='grey empty star' />
+				}
+				fullSymbol={<img src={starYellow} className='icon' alt='yellow star' />}
 			/>
 
 			{favorites.some((el) => el.rating === userRating) ? (

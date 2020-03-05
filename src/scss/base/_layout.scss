@@ -1,6 +1,7 @@
 .layout {
 	display: grid;
-	grid-template-rows: 5rem auto 5rem;
+	grid-template-rows: 5rem 1fr 5rem;
+	// grid-template-columns: 1fr;
 	grid-template-areas:
 		"header"
 		"content"

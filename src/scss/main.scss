@@ -8,17 +8,19 @@
 html,
 body {
 	font-family: $font-primary;
-	width: 100%;
 	// max-width: 1024px;
-	// line-height: 1.5;
 }
 
 .wrapper {
-	// margin: 0 3rem;
 	padding: 0 1rem;
+
+	@include mediaQuery(xs) {
+		// max-width: 400px;
+	}
 
 	@include mediaQuery(sm) {
 		margin: 0 auto;
+		// max-width: 600px;
 	}
 
 	@include mediaQuery(md) {
@@ -38,35 +40,10 @@ body {
 	}
 }
 
-@import "./base/layout";
-@import "./header";
-@import "./main";
-@import "./footer";
-@import "./pages/landingPage";
-@import "./components/customSearch";
-@import "./pages/search";
-@import "./components/card";
-@import "./components/pagination";
-@import "./components/ratingWidget";
-@import "./components/ratings";
-@import "./components/movieDetails";
-@import "./movies";
-
-.delete-btn {
-	color: $color-red;
-	transition: 0.3s;
-	&:hover {
-		transform: scale(1.3);
-		-webkit-transform: scale(1.3);
-		-moz-transform: scale(1.3);
-		-ms-transform: scale(1.3);
-		-o-transform: scale(1.3);
-	}
-}
-
 .container {
 	font-size: 2em;
 	transition: all 0.3s linear;
+	width: 100%;
 
 	&:hover {
 		-webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
@@ -79,6 +56,25 @@ body {
 			inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
 	}
 }
+
+.icon {
+	width: 30px;
+	height: 30px;
+}
+
+@import "./base/layout";
+@import "./header";
+@import "./main";
+@import "./footer";
+@import "./pages/landingPage";
+@import "./components/customSearch";
+@import "./pages/search";
+@import "./components/card";
+@import "./components/pagination";
+@import "./components/ratingWidget";
+
+@import "./components/movieDetails";
+@import "./movies";
 
 .blue {
 	background-color: $color-primary;

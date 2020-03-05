@@ -9,7 +9,7 @@ const ModelsFound = ({ getMediaType }) => {
 	const { movies: moviesList, loading, errorMessage } = movies;
 
 	return (
-		<div className='movies'>
+		<ul className='movies'>
 			{loading && !errorMessage ? (
 				<Spinner />
 			) : errorMessage ? (
@@ -19,7 +19,7 @@ const ModelsFound = ({ getMediaType }) => {
 					<Movie key={movie.id} movie={movie} getMediaType={getMediaType} />
 				))
 			)}
-		</div>
+		</ul>
 	);
 };
 

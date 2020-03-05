@@ -1,5 +1,6 @@
 .header {
 	grid-area: header;
+	// max-width: 100%;
 }
 
 .header__main {
@@ -25,6 +26,7 @@
 
 .main__menu {
 	@extend %flexCenter;
+	position: relative;
 
 	.main__links {
 		list-style: none;
@@ -83,11 +85,11 @@
 		bottom: 0;
 		overflow-x: hidden;
 		transition: 0.5s;
+		z-index: 1;
 
 		li {
 			background-color: lighten($color-primary, 5%);
 			padding: 8px;
-
 			display: block;
 			transition: 0.3s;
 			width: 100%;

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import customPoster from "../../assets/images/customPoster.jpg";
 import RatingBox from "../+RatingBox";
-import { setImgUrl, setProfileImgUrl } from "../../utils/utils";
+import { setImgUrl, setProfileImgUrl, getOnlyYear } from "../../utils/utils";
 
 const Movie = ({
 	movie: {
@@ -73,13 +73,14 @@ const Movie = ({
 			case "movie":
 				return (
 					<p className='card__text'>
-						Released: {release}, Type: {type}
+						Released: {getOnlyYear(release)}, Type: {type}
 					</p>
 				);
+
 			case "tv":
 				return (
 					<p className='card__text'>
-						Released: {airDate ? airDate : "no info"}, Type: {type}
+						Released: {airDate ? getOnlyYear(airDate) : "no info"}, Type: {type}
 					</p>
 				);
 
@@ -94,27 +95,29 @@ const Movie = ({
 	const link = `/details/${id}`;
 
 	return (
-		<div className='card m-1'>
-			<div className='card-image__container'>
-				<Link to={link} onClick={() => getMediaType(type)}>
-					<img
-						src={
-							poster_path === null || profile_path === null
-								? customPoster
-								: setImgType()
-						}
-						alt={`The movie titled: ${title}`}
-					/>
-				</Link>
-			</div>
+		<li className='cards__item'>
+			<div className='card'>
+				<div className='card-image__container'>
+					<Link to={link} onClick={() => getMediaType(type)}>
+						<img
+							src={
+								poster_path === null || profile_path === null
+									? customPoster
+									: setImgType()
+							}
+							alt={`The movie titled: ${title}`}
+						/>
+					</Link>
+				</div>
 
-			<div className='card__block'>
-				<h4 className='card__title'>{setCardName()}</h4>
-				{setCardText(type)}
+				<div className='card__block'>
+					<h4 className='card__title'>{setCardName()}</h4>
+					{setCardText(type)}
 
-				<RatingBox userRating={setRating()} item={movie} />
+					<RatingBox userRating={setRating()} item={movie} />
+				</div>
 			</div>
-		</div>
+		</li>
 	);
 };
 

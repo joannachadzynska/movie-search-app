@@ -27,9 +27,9 @@ const Search = ({ getMovies, getMediaType, mediaType }) => {
 
 			<ModelsFound getMediaType={getMediaType} type={mediaType} />
 
-			{isSubmited && (
+			{/* {isSubmited && (
 				<Pagination searchedValue={searchedValue} pageNeighbours={1} />
-			)}
+			)} */}
 		</div>
 	);
 };

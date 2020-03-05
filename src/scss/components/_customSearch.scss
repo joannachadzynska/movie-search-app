@@ -1,15 +1,16 @@
 .search__form {
-	display: grid;
-	grid-template-columns: 1fr auto;
+	grid-area: search;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 	width: 100%;
-	z-index: 1;
 
 	.search__input {
 		border: 2px solid $color-primary;
 		min-width: 170px;
 		padding: 10px 15px;
 		font-size: 1rem;
-		max-width: 100%;
+		width: 90%;
 	}
 
 	.search__btn {

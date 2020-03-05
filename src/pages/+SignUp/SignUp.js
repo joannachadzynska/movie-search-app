@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { userPostFetch } from "../redux/actions";
+// import { userPostFetch } from "../redux/actions";
 import { Link } from "react-router-dom";
 
 class Signup extends Component {
@@ -86,7 +86,7 @@ class Signup extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	userPostFetch: (userInfo) => dispatch(userPostFetch(userInfo))
+	// userPostFetch: (userInfo) => dispatch(userPostFetch(userInfo))
 });
 
 export default connect(null, mapDispatchToProps)(Signup);

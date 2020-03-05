@@ -1,10 +1,7 @@
 export const setImgUrl = (path) => `http://image.tmdb.org/t/p/w185${path}`;
+
 export const setProfileImgUrl = (path) =>
 	`http://image.tmdb.org/t/p/w185${path}`;
-
-export const calculateAge = (birthdate) => {
-	// console.log(birthdate);
-};
 
 export const range = (from, to, step = 1) => {
 	let i = from;
@@ -46,3 +43,9 @@ export const isSearchedByYear = (searchTerm) => (item) => {
 
 export const isSearchedByType = (searchTerm) => (item) =>
 	item.item.media_type.toLowerCase().includes(searchTerm.toLowerCase());
+
+export const getOnlyYear = (date) => {
+	if (!date) return;
+	let year = date.slice(0, 4);
+	return year;
+};

@@ -5,7 +5,7 @@ import Panel from "../+Panel";
 
 const Links = ({ isOpen }) => {
 	const user = useSelector((state) => state.user);
-	const { email } = user.data;
+
 	return (
 		<ul className={isOpen ? "show main__links" : "main__links hide"}>
 			<li>
@@ -29,15 +29,15 @@ const Links = ({ isOpen }) => {
 				</NavLink>
 			</li> */}
 
-			<li>
-				{email ? (
+			{/* <li>
+				{user.data.email ? (
 					<Panel />
 				) : (
 					<NavLink to='/sign-in' activeClassName='active'>
 						signin
 					</NavLink>
 				)}
-			</li>
+			</li> */}
 		</ul>
 	);
 };

@@ -1,39 +1,11 @@
 // movies
 .movies {
-	display: grid;
-	grid-gap: 1rem;
-	align-items: center;
-	width: 100%;
+	grid-area: movies;
+	display: flex;
 
-	@include mediaQuery(md) {
-		grid-template-columns: repeat(2, 1fr);
-	}
-
-	@include mediaQuery(lg) {
-		grid-template-columns: repeat(3, 1fr);
-	}
-
-	@include mediaQuery(xl) {
-		grid-template-columns: repeat(4, 1fr);
-	}
-
-	@include mediaQuery(xl) {
-		grid-template-columns: repeat(5, 1fr);
-	}
+	flex-wrap: wrap;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	// width: 100%;
 }
-
-// .add-movies {
-// 	text-align: center;
-// }
-
-// .add-movies button {
-// 	font-size: 1em;
-// 	padding: 8px;
-// 	margin: 0 10px 30px 10px;
-// }
-
-// .errorMessage {
-// 	margin: auto;
-// 	font-weight: bold;
-// 	color: rgb(161, 15, 15);
-// }
