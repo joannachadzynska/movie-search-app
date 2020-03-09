@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { connect } from "react-redux";
 import { getMovies } from "../../duck/movies/actions";
 import ModelsFound from "./ModelsFound";
@@ -8,11 +8,20 @@ import Pagination from "../+Pagination/Pagination";
 const Search = ({ getMovies, getMediaType, mediaType }) => {
 	const [searchedValue, setSearchedValue] = useState("");
 	const [isSubmited, setIsSubmited] = useState(false);
+	const [currentPage, setCurrentPage] = useState(1);
+
+	const onChangePage = useCallback(
+		(data) => {
+			const { page } = data;
+			setCurrentPage(page);
+		},
+		[currentPage]
+	);
 
 	const callSearchFunction = (e) => {
 		e.preventDefault();
 		if (!e.target.search.value) return;
-		getMovies(searchedValue, 1);
+		getMovies(searchedValue, currentPage);
 		setIsSubmited(true);
 		e.target.search.value = "";
 	};
@@ -27,9 +36,14 @@ const Search = ({ getMovies, getMediaType, mediaType }) => {
 
 			<ModelsFound getMediaType={getMediaType} type={mediaType} />
 
-			{/* {isSubmited && (
-				<Pagination searchedValue={searchedValue} pageNeighbours={1} />
-			)} */}
+			{isSubmited && (
+				<Pagination
+					searchedValue={searchedValue}
+					pagesShow={3}
+					onChangePage={onChangePage}
+					pageNeighbours={1}
+				/>
+			)}
 		</div>
 	);
 };
