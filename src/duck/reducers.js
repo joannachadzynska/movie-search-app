@@ -11,7 +11,7 @@ import storage from "redux-persist/lib/storage";
 const persistConfig = {
 	key: "root",
 	storage,
-	whitelist: ["favorites", "watchlist", "user"] // which reducer want to store
+	whitelist: ["favorites", "watchlist", "user", "moviesDetails", "similar"] // which reducer want to store
 };
 
 const rootReducer = combineReducers({
