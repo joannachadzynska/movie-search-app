@@ -25,7 +25,7 @@ const MovieDetails = ({ id, details, mediaType, crew }) => {
 	}, [id, dispatch, mediaType]);
 
 	return (
-		<div className='details'>
+		<div className='details wrapper'>
 			{loading ? (
 				<Spinner />
 			) : (
