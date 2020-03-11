@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 
 import customPoster from "../../assets/images/customPoster.jpg";
 import RatingBox from "../+RatingBox";
-import { setImgUrl, setProfileImgUrl, getOnlyYear } from "../../utils/utils";
+import {
+	setImgUrl,
+	setProfileImgUrl,
+	getOnlyYear,
+	setRating
+} from "../../utils/utils";
 
 const Movie = ({
 	movie: {
@@ -21,26 +26,10 @@ const Movie = ({
 	getMediaType,
 	rating
 }) => {
-	let userRating;
 	let image;
 	let cardName;
 
 	const favorites = useSelector((state) => state.favorites.watched);
-
-	const setRating = () => {
-		if (favorites.some((el) => el.id === id)) {
-			const fav = favorites
-				.filter((el) => el.id === id)
-				.map((el) => el.rating)
-				.toString();
-
-			userRating = Number(fav);
-		} else {
-			userRating = rating;
-		}
-
-		return userRating;
-	};
 
 	const setImgType = () => {
 		if (type === "movie") {
@@ -114,7 +103,10 @@ const Movie = ({
 					<h4 className='card__title'>{setCardName()}</h4>
 					{setCardText(type)}
 
-					<RatingBox userRating={setRating()} item={movie} />
+					<RatingBox
+						userRating={setRating(favorites, id, rating)}
+						item={movie}
+					/>
 				</div>
 			</div>
 		</li>

@@ -14,6 +14,7 @@ import Checkbox from "../+Checkbox";
 import { FaTrashAlt } from "react-icons/fa";
 import starGrey from "../../assets/images/star-grey.png";
 import starYellow from "../../assets/images/star-yellow.png";
+import { setRating } from "../../utils/utils";
 
 const RatingBox = ({ item, userRating }) => {
 	const dispatch = useDispatch();

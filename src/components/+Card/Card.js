@@ -16,31 +16,33 @@ const Card = ({ mediaType, type, getMediaType, isInSearchComponent }) => {
 	const imgUrl = setImgUrl(poster);
 
 	return (
-		<div className='card'>
-			<div className='card-image__container'>
-				<Link
-					to={generatePath("/details/:id", { id })}
-					onClick={
-						isInSearchComponent
-							? () => getMediaType(type)
-							: () => console.log("similar item")
-					}>
-					<img
-						src={poster === null ? customPoster : imgUrl}
-						alt={`The movie titled: ${title}`}
-					/>
-				</Link>
-			</div>
+		<li className='cards__item'>
+			<div className='card'>
+				<div className='card-image__container'>
+					<Link
+						to={generatePath("/details/:id", { id })}
+						onClick={
+							isInSearchComponent
+								? () => getMediaType(type)
+								: () => console.log("similar item")
+						}>
+						<img
+							src={poster === null ? customPoster : imgUrl}
+							alt={`The movie titled: ${title}`}
+						/>
+					</Link>
+				</div>
 
-			<div className='card__block'>
-				<h4 className='card__title'>{title}</h4>
-				<p className='card__text'>
-					Released: {release ? release : airDate}, Type: {type}
-				</p>
+				<div className='card__block'>
+					<h4 className='card__title'>{title}</h4>
+					<p className='card__text'>
+						Released: {release ? release : airDate}, Type: {type}
+					</p>
 
-				<RatingBox item={mediaType} />
+					<RatingBox item={mediaType} />
+				</div>
 			</div>
-		</div>
+		</li>
 	);
 };
 
