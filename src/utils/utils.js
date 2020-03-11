@@ -49,3 +49,20 @@ export const getOnlyYear = (date) => {
 	let year = date.slice(0, 4);
 	return year;
 };
+
+export const setRating = (favorites, id, rating) => {
+	// const favorites = useSelector((state) => state.favorites.watched);
+	let userRating;
+	if (favorites.some((el) => el.id === id)) {
+		const fav = favorites
+			.filter((el) => el.id === id)
+			.map((el) => el.rating)
+			.toString();
+
+		userRating = Number(fav);
+	} else {
+		userRating = rating;
+	}
+
+	return userRating;
+};
