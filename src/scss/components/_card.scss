@@ -1,6 +1,7 @@
 // movie card
 
 .cards__item {
+	background-color: #fff;
 	display: flex;
 	justify-content: center;
 	padding: 1rem;
@@ -80,8 +81,5 @@
 		}
 	}
 
-	.card__rating {
-		display: flex;
-		justify-content: space-between;
-	}
+	@include ratingBox;
 }
