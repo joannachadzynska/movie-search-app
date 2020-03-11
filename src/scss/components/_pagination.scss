@@ -10,8 +10,8 @@
 	li button {
 		@extend %btn;
 		border-width: 1px;
-
 		border-radius: 0;
+		padding: 12px;
 		-webkit-border-radius: 0;
 		-moz-border-radius: 0;
 		-ms-border-radius: 0;
@@ -21,6 +21,7 @@
 	li button.active {
 		background-color: lighten(#30336b, 5%);
 		color: #fff;
+		outline: none;
 
 		&:hover {
 			background-color: darken(#30336b, 10%);

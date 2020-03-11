@@ -120,3 +120,29 @@ $breakpoints: (
 	justify-content: space-between;
 	align-items: center;
 }
+
+@mixin ratingBox {
+	.card__rating {
+		display: flex;
+		justify-content: space-between;
+		background-color: #fff;
+
+		button {
+			background-color: transparent;
+
+			.delete-btn {
+				color: $color-red;
+				transition: 0.3s;
+
+				&:hover {
+					color: darken($color-red, 10%);
+					transform: scale(1.2);
+					-webkit-transform: scale(1.2);
+					-moz-transform: scale(1.2);
+					-ms-transform: scale(1.2);
+					-o-transform: scale(1.2);
+				}
+			}
+		}
+	}
+}
