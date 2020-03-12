@@ -23,13 +23,8 @@ const Links = ({ isOpen }) => {
 					Watchlist
 				</NavLink>
 			</li>
-			{/* <li>
-				<NavLink to='/signin' activeClassName='active'>
-					signin
-				</NavLink>
-			</li> */}
 
-			{/* <li>
+			<li>
 				{user.data.email ? (
 					<Panel />
 				) : (
@@ -37,7 +32,7 @@ const Links = ({ isOpen }) => {
 						signin
 					</NavLink>
 				)}
-			</li> */}
+			</li>
 		</ul>
 	);
 };

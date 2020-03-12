@@ -2,16 +2,24 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { userSignIn } from "../../duck/user/actions";
 import { Link } from "react-router-dom";
+import { validateUserLogin } from "../../utils/utils";
 
 const SignIn = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	// const [isValid, setIsValid] = useState(false);
 	const dispatch = useDispatch();
 
 	const onFormSubmit = (e) => {
 		e.preventDefault();
-		if (!email || !password) return;
-		dispatch(userSignIn({ email: email, password: password }));
+
+		const isValid = validateUserLogin(email, password);
+		const errorMessages = isValid[1];
+		console.log(isValid, errorMessages);
+
+		if (!isValid) return;
+
+		dispatch(userSignIn({ email, password }));
 		setEmail("");
 		setPassword("");
 	};
@@ -22,7 +30,7 @@ const SignIn = () => {
 			className='d-flex justify-content-center align-items-center'>
 			<div style={{ width: 300 }}>
 				<h1 className='text-center'>Sign in</h1>
-				<form onSubmit={onFormSubmit}>
+				<form onSubmit={onFormSubmit} noValidate>
 					<fieldset>
 						<label>Email address</label>
 						<input
