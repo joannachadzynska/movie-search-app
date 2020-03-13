@@ -70,6 +70,42 @@
 	}
 }
 
+@mixin signInUpBtn {
+	button {
+		border: none;
+		border-radius: 5px;
+		font-weight: 500;
+		font-size: 0.7em;
+		letter-spacing: 2px;
+		@include set-background($color-pink);
+		padding: 10px 25px;
+		text-transform: uppercase;
+		transition: 0.3s ease-in-out;
+
+		&:hover {
+			transform: scale(0.95);
+			-webkit-transform: scale(0.95);
+			-moz-transform: scale(0.95);
+			-ms-transform: scale(0.95);
+			-o-transform: scale(0.95);
+			@include set-background(darken($color-pink, 10%));
+		}
+
+		@include mediaQuery(sm) {
+			font-size: calc(0.5em + 2vmin);
+		}
+
+		@include mediaQuery(md) {
+			padding: 12px 30px;
+			align-self: flex-start;
+		}
+
+		@include mediaQuery(lg) {
+			font-size: 0.8em;
+		}
+	}
+}
+
 %menuLink {
 	color: $color-white;
 	cursor: pointer;
@@ -145,4 +181,21 @@ $breakpoints: (
 			}
 		}
 	}
+}
+
+@mixin container {
+	// border: 1px solid black;
+	transition: all 0.3s linear;
+	padding: 0.7rem;
+
+	// &:hover {
+	// 	-webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+	// 		inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+	// 	-moz-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+	// 		inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+	// 	-o-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+	// 		inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+	// 	box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+	// 		inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+	// }
 }

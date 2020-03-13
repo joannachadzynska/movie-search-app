@@ -25,13 +25,13 @@ const Links = ({ isOpen }) => {
 			</li>
 
 			<li>
-				{user.data.email ? (
+				{/* {user.data.email !== null ? (
 					<Panel />
 				) : (
 					<NavLink to='/sign-in' activeClassName='active'>
 						signin
 					</NavLink>
-				)}
+				)} */}
 			</li>
 		</ul>
 	);

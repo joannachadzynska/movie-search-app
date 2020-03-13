@@ -25,14 +25,12 @@ const SignIn = () => {
 	};
 
 	return (
-		<div
-			style={{ height: "100vh" }}
-			className='d-flex justify-content-center align-items-center'>
-			<div style={{ width: 300 }}>
-				<h1 className='text-center'>Sign in</h1>
-				<form onSubmit={onFormSubmit} noValidate>
-					<fieldset>
-						<label>Email address</label>
+		<div className='wrapper sign-in'>
+			<div className='sign-in__container'>
+				<h1 className='sign-in__title'>Sign in</h1>
+				<form onSubmit={onFormSubmit} className='sign-in__form' noValidate>
+					<fieldset className='my-1'>
+						<label>Email</label>
 						<input
 							type='email'
 							placeholder='Enter email'
@@ -43,7 +41,7 @@ const SignIn = () => {
 						/>
 					</fieldset>
 
-					<fieldset>
+					<fieldset className='my-1'>
 						<label>Password</label>
 						<input
 							type='password'
@@ -54,13 +52,14 @@ const SignIn = () => {
 							}}
 						/>
 					</fieldset>
-					<button type='submit' className='w-100 mt-3'>
+					<button type='submit' className='my-1'>
 						Sign in
 					</button>
+
+					<p className='sign-in__form__info'>
+						Don't have an account? <Link to='sign-up'>Register here</Link>
+					</p>
 				</form>
-				<h2>
-					Don't have an account? <Link to='sign-up'>Register here</Link>
-				</h2>
 			</div>
 		</div>
 	);
