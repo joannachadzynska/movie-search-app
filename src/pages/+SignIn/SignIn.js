@@ -3,11 +3,15 @@ import { useDispatch } from "react-redux";
 import { userSignIn } from "../../duck/user/actions";
 import { Link } from "react-router-dom";
 import { validateUserLogin } from "../../utils/utils";
+import FormInput from "../../components/+FormInput/FormInput";
 
 const SignIn = () => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	// const [isValid, setIsValid] = useState(false);
+	const [userCredentials, setCredentials] = useState({
+		email: "",
+		password: ""
+	});
+	const { email, password } = userCredentials;
+
 	const dispatch = useDispatch();
 
 	const onFormSubmit = (e) => {
@@ -20,47 +24,48 @@ const SignIn = () => {
 		if (!isValid) return;
 
 		dispatch(userSignIn({ email, password }));
-		setEmail("");
-		setPassword("");
+		setCredentials({
+			email: "",
+			password: ""
+		});
+	};
+
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setCredentials({ ...userCredentials, [name]: value });
 	};
 
 	return (
 		<div className='wrapper sign-in'>
-			<div className='sign-in__container'>
-				<h1 className='sign-in__title'>Sign in</h1>
-				<form onSubmit={onFormSubmit} className='sign-in__form' noValidate>
-					<fieldset className='my-1'>
-						<label>Email</label>
-						<input
-							type='email'
-							placeholder='Enter email'
-							value={email}
-							onChange={(e) => {
-								setEmail(e.target.value);
-							}}
-						/>
-					</fieldset>
+			<h1 className='sign-in__title'>Sign in</h1>
+			<form onSubmit={onFormSubmit} className='sign-in__form' noValidate>
+				<FormInput
+					type='email'
+					name='email'
+					handleChange={handleChange}
+					value={email}
+					label='Email'
+					placeholder='Email'
+					required
+				/>
+				<FormInput
+					type='password'
+					name='password'
+					handleChange={handleChange}
+					value={password}
+					label='Password'
+					placeholder='Password'
+					required
+				/>
 
-					<fieldset className='my-1'>
-						<label>Password</label>
-						<input
-							type='password'
-							placeholder='Password'
-							value={password}
-							onChange={(e) => {
-								setPassword(e.target.value);
-							}}
-						/>
-					</fieldset>
-					<button type='submit' className='my-1'>
-						Sign in
-					</button>
+				<button type='submit' className='my-1'>
+					Sign in
+				</button>
 
-					<p className='sign-in__form__info'>
-						Don't have an account? <Link to='sign-up'>Register here</Link>
-					</p>
-				</form>
-			</div>
+				<p className='sign-in__form__info'>
+					Don't have an account? <Link to='sign-up'>Register here</Link>
+				</p>
+			</form>
 		</div>
 	);
 };

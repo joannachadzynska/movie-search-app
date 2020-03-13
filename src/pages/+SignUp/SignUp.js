@@ -1,92 +1,78 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useState } from "react";
+
 // import { userPostFetch } from "../redux/actions";
 import { Link } from "react-router-dom";
+import FormInput from "../../components/+FormInput/FormInput";
 
-class Signup extends Component {
-	state = {
-		username: "",
+const SignUp = () => {
+	const [userCredentials, setUserCredentials] = useState({
+		displayName: "",
 		email: "",
 		password: "",
-		avatar: "",
-		bio: ""
+		confirmPassword: ""
+	});
+
+	const { displayName, email, password, confirmPassword } = userCredentials;
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		if (password !== confirmPassword) {
+			alert("passwords don't match");
+			return;
+		}
 	};
 
-	handleChange = (event) => {
-		this.setState({
-			[event.target.name]: event.target.value
-		});
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setUserCredentials({ ...userCredentials, [name]: value });
 	};
 
-	handleSubmit = (event) => {
-		event.preventDefault();
-		this.props.userPostFetch(this.state);
-	};
+	return (
+		<div className='sign-up wrapper'>
+			<h2 className='sign-up__title'>I do not have a account</h2>
+			<span>Sign up with your email and password</span>
+			<form className='sign-up__form' onSubmit={handleSubmit}>
+				<FormInput
+					type='text'
+					name='displayName'
+					label='Display Name'
+					value={displayName}
+					onChange={handleChange}
+					required
+				/>
+				<FormInput
+					type='email'
+					name='email'
+					label='Email'
+					value={email}
+					onChange={handleChange}
+					required
+				/>
+				<FormInput
+					type='password'
+					name='password'
+					label='Password'
+					value={password}
+					onChange={handleChange}
+					required
+				/>
+				<FormInput
+					type='password'
+					name='confirmPassword'
+					label='Confirm Password'
+					value={confirmPassword}
+					onChange={handleChange}
+					required
+				/>
+				<button>Sign up</button>
 
-	render() {
-		return (
-			<div>
-				<form onSubmit={this.handleSubmit}>
-					<h1>Sign Up For An Account</h1>
-
-					<label>Username</label>
-					<input
-						name='username'
-						placeholder='Username'
-						value={this.state.username}
-						onChange={this.handleChange}
-					/>
-					<br />
-
-					<label>Username</label>
-					<input
-						name='email'
-						placeholder='Email'
-						value={this.state.email}
-						onChange={this.handleChange}
-					/>
-					<br />
-
-					<label>Password</label>
-					<input
-						type='password'
-						name='password'
-						placeholder='Password'
-						value={this.state.password}
-						onChange={this.handleChange}
-					/>
-					<br />
-
-					<label>Avatar</label>
-					<input
-						name='avatar'
-						placeholder='Avatar (URL)'
-						value={this.state.avatar}
-						onChange={this.handleChange}
-					/>
-					<br />
-
-					<label>Bio</label>
-					<textarea
-						name='bio'
-						placeholder='Bio'
-						value={this.state.bio}
-						onChange={this.handleChange}
-					/>
-					<br />
-
-					<input type='submit' />
-				</form>
-				<h2>
+				<p className='sign-up__form__info'>
 					Already have an account? <Link to='sign-in'>Login here</Link>
-				</h2>
-			</div>
-		);
-	}
-}
+				</p>
+			</form>
+		</div>
+	);
+};
 
-const mapDispatchToProps = (dispatch) => ({
-	// userPostFetch: (userInfo) => dispatch(userPostFetch(userInfo))
-});
-
-export default connect(null, mapDispatchToProps)(Signup);
+export default SignUp;
