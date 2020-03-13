@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-
-// import { userPostFetch } from "../redux/actions";
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../duck/user/actions";
 import { Link } from "react-router-dom";
 import FormInput from "../../components/+FormInput/FormInput";
 
 const SignUp = () => {
+	const dispatch = useDispatch();
 	const [userCredentials, setUserCredentials] = useState({
 		displayName: "",
 		email: "",
@@ -21,6 +22,8 @@ const SignUp = () => {
 			alert("passwords don't match");
 			return;
 		}
+
+		dispatch(registerUser(userCredentials));
 	};
 
 	const handleChange = (e) => {
