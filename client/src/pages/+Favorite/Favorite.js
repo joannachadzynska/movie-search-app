@@ -4,14 +4,12 @@ import CustomSearch from "../../components/+CustomSearch";
 import Movie from "../../components/+Movie";
 import { isSearched, isSearchedByType } from "../../utils/utils";
 import { Redirect } from "react-router-dom";
+import Filters from "../../components/+Filters";
 
 const Favorite = () => {
 	const favorites = useSelector((state) => state.favorites.watched);
 	const user = useSelector((state) => state.user);
 	// const { email } = user.data;
-
-	console.log(user.isAuthenticated);
-
 	const [searchTerm, setSearchTerm] = useState("");
 	const [isSelectMedia, setIsSelectMedia] = useState(false);
 
@@ -24,23 +22,12 @@ const Favorite = () => {
 		e.preventDefault();
 	};
 
-	const selectMediaType = (e) => {
-		e.persist();
-		setIsSelectMedia(true);
-		setSearchTerm(e.target.value);
-	};
-
 	const searched = () => {
 		if (isSelectMedia) {
 			return isSearchedByType(searchTerm);
 		} else {
 			return isSearched(searchTerm);
 		}
-	};
-
-	const sortBy = (e) => {
-		e.persist();
-		console.log(e.target.value);
 	};
 
 	// sort by rating
@@ -68,9 +55,24 @@ const Favorite = () => {
 
 	// const titles = favorites.map((el) => el.item.name || el.item.title);
 	// console.log(titles.sort().reverse());
+	const sortByRating = () => {
+		// sort by rating
+
+		console.log(favorites.map((el) => el.item.vote_average));
+
+		favorites.sort((a, b) => b.item.vote_average - a.item.vote_average);
+	};
+
+	const sortBy = (e) => {
+		e.persist();
+		const { value } = e.target;
+		if (value === "rating") {
+			sortByRating();
+		}
+	};
 
 	return (
-		<div>
+		<div className='wrapper'>
 			<h2>Favorite</h2>
 			<CustomSearch
 				handleChange={handleSearchTerm}
@@ -78,15 +80,12 @@ const Favorite = () => {
 				handleSubmit={submitSearch}
 			/>
 
-			<select name='mediaType' id='mediaType' onChange={selectMediaType}>
-				<option defaultValue disabled>
-					Select
-				</option>
-				<option value='movie'>Movie</option>
-				<option value='tv'>Tv</option>
-				<option value='person'>Person</option>
-			</select>
-
+			<Filters
+				setSearchTerm={setSearchTerm}
+				setIsSelectMedia={setIsSelectMedia}
+				items={favorites}
+			/>
+			{/* 
 			<select name='sort' id='sort' onChange={sortBy}>
 				<option defaultValue disabled>
 					Select
@@ -95,16 +94,24 @@ const Favorite = () => {
 				<option value='year'>Year</option>
 				<option value='title'>Title</option>
 				<option value='name'>Name</option>
-			</select>
+			</select> */}
 
 			{user.isAuthenticated ? (
-				<div className='movies'>
+				<div
+					className='movies'
+					style={{
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "center",
+						width: "100%"
+					}}>
 					{favorites !== undefined &&
 						favorites
 							.filter(searched())
 							.map((fav) => (
 								<Movie key={fav.id} movie={fav.item} rating={fav.rating} />
-							))}
+							))
+							.sort()}
 				</div>
 			) : (
 				<Redirect to='/sign-in'>
