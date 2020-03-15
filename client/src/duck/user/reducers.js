@@ -1,9 +1,8 @@
 import { userTypes } from "./actionTypes";
-import localStorage from "redux-persist/es/storage";
 
 const initState = {
 	token: localStorage.getItem("token"),
-	isAuthenticated: null,
+	isAuthenticated: false,
 	isLoading: false,
 	user: null,
 	data: null
@@ -27,14 +26,13 @@ const userReducer = (state = initState, { type, payload }) => {
 
 		case userTypes.USER_REGISTER_SUCCESS:
 		case userTypes.USER_LOGIN_SUCCESS:
-			// localStorage.setItem("token", payload.token);
-			console.log(payload);
-
+			localStorage.setItem("token", payload.token);
 			return {
 				...state,
-				...payload,
+				// ...payload,
 				isLoading: false,
 				isAuthenticated: true,
+				user: payload,
 				data: payload
 			};
 
@@ -43,13 +41,14 @@ const userReducer = (state = initState, { type, payload }) => {
 		case userTypes.USER_REGISTER_FAILURE:
 		case userTypes.USER_LOGOUT:
 			localStorage.removeItem("token");
+
 			return {
 				...state,
 				token: null,
-				user: null,
+				user: payload,
 				isAuthenticated: false,
 				isLoading: false,
-				data: null
+				data: payload
 			};
 
 		default:

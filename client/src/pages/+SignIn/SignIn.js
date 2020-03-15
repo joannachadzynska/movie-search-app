@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { userSignIn } from "../../duck/user/actions";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { validateUserLogin } from "../../utils/utils";
 import FormInput from "../../components/+FormInput/FormInput";
 
-const SignIn = () => {
+const SignIn = ({ history }) => {
 	const [userCredentials, setCredentials] = useState({
 		email: "",
 		password: ""
@@ -19,7 +19,6 @@ const SignIn = () => {
 
 		const isValid = validateUserLogin(email, password);
 		const errorMessages = isValid[1];
-		console.log(isValid, errorMessages);
 
 		if (!isValid) return;
 
@@ -28,6 +27,8 @@ const SignIn = () => {
 			email: "",
 			password: ""
 		});
+
+		history.push("/");
 	};
 
 	const handleChange = (e) => {

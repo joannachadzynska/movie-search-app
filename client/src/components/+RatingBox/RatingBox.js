@@ -14,21 +14,24 @@ import Checkbox from "../+Checkbox";
 import { FaTrashAlt } from "react-icons/fa";
 import starGrey from "../../assets/images/star-grey.png";
 import starYellow from "../../assets/images/star-yellow.png";
-import { setRating } from "../../utils/utils";
 
-const RatingBox = ({ item, userRating }) => {
+const RatingBox = ({ item, userRating, userId }) => {
 	const dispatch = useDispatch();
 	const [rating, setRating] = useState(0);
 	const [isChecked, setIsChecked] = useState(false);
+	const user = useSelector((state) => state.user);
 
 	const handleRating = (rating) => {
-		dispatch(
-			addToFavorite({
-				id: item.id ? item.id : uid(10),
-				item: item,
-				rating: rating
-			})
-		);
+		if (user.isAuthenticated && userId === user.email) {
+			dispatch(
+				addToFavorite({
+					id: item.id ? item.id : uid(10),
+					item: item,
+					rating: rating,
+					userID: userId
+				})
+			);
+		}
 	};
 
 	const handleCheckboxChange = (e) => {

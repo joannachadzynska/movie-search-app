@@ -30,6 +30,9 @@ const Movie = ({
 	let cardName;
 
 	const favorites = useSelector((state) => state.favorites.watched);
+	const user = useSelector((state) => state.user);
+
+	console.log(user);
 
 	const setImgType = () => {
 		if (type === "movie") {
@@ -105,6 +108,7 @@ const Movie = ({
 
 					<RatingBox
 						userRating={setRating(favorites, id, rating)}
+						userId={user.isAuthenticated ? user.email : null}
 						item={movie}
 					/>
 				</div>

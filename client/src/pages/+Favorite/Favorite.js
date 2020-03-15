@@ -8,7 +8,9 @@ import { Redirect } from "react-router-dom";
 const Favorite = () => {
 	const favorites = useSelector((state) => state.favorites.watched);
 	const user = useSelector((state) => state.user);
-	const { email } = user.data;
+	// const { email } = user.data;
+
+	console.log(user.isAuthenticated);
 
 	const [searchTerm, setSearchTerm] = useState("");
 	const [isSelectMedia, setIsSelectMedia] = useState(false);
@@ -95,7 +97,7 @@ const Favorite = () => {
 				<option value='name'>Name</option>
 			</select>
 
-			{email ? (
+			{user.isAuthenticated ? (
 				<div className='movies'>
 					{favorites !== undefined &&
 						favorites

@@ -8,6 +8,11 @@ export const userSignIn = (payload) => ({
 	payload
 });
 
+export const userSignOut = (payload) => ({
+	type: userTypes.USER_LOGOUT,
+	payload
+});
+
 // user register
 
 export const registerSuccess = (payload) => ({

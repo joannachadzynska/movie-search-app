@@ -1,14 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { userSignIn } from "../../duck/user/actions";
+import { userSignOut } from "../../duck/user/actions";
 
 const Links = ({ isOpen }) => {
 	const user = useSelector((state) => state.user);
 	const dispatch = useDispatch();
+
 	const onLogOut = () => {
-		console.log("LogOut pressed.");
-		dispatch(userSignIn({ email: "", password: "" }));
+		dispatch(userSignOut({ email: null, password: null }));
 	};
 
 	const isEmpty = (obj) => {
@@ -17,7 +17,6 @@ const Links = ({ isOpen }) => {
 				return false;
 			}
 		}
-
 		return true;
 	};
 
@@ -40,13 +39,13 @@ const Links = ({ isOpen }) => {
 			</li>
 
 			<li>
-				{!isEmpty(user.data) ? (
+				{user.isAuthenticated ? (
 					<NavLink to='/sign-out' activeClassName='active' onClick={onLogOut}>
-						sign out
+						SignOut
 					</NavLink>
 				) : (
 					<NavLink to='/sign-in' activeClassName='active'>
-						sign in
+						SignIn
 					</NavLink>
 				)}
 			</li>
