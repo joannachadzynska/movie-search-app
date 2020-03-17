@@ -32,8 +32,6 @@ const Movie = ({
 	const favorites = useSelector((state) => state.favorites.watched);
 	const user = useSelector((state) => state.user);
 
-	console.log(user);
-
 	const setImgType = () => {
 		if (type === "movie") {
 			image = setImgUrl(poster_path);
