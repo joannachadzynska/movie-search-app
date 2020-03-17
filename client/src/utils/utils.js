@@ -1,5 +1,3 @@
-import { string } from "prop-types";
-
 export const setImgUrl = (path) => `http://image.tmdb.org/t/p/w185${path}`;
 
 export const setProfileImgUrl = (path) =>
@@ -17,7 +15,7 @@ export const range = (from, to, step = 1) => {
 	return range;
 };
 
-// Filter and sort
+// Filters
 
 export const isSearched = (searchTerm) => (item) => {
 	if (item.item.media_type === "movie") {
@@ -54,9 +52,64 @@ export const getOnlyYear = (date) => {
 	return year;
 };
 
+// sorting
+export const sortByRating = (items) => {
+	const copy = [...items];
+	copy.sort((a, b) => b.item.vote_average - a.item.vote_average);
+	return copy;
+};
+
+export const sortByRatingReverse = (items) => {
+	const copy = [...items];
+	copy.sort((a, b) => a.item.vote_average - b.item.vote_average);
+	return copy;
+};
+
+export const sortByYear = (items, mediaType) => {
+	const copy = [...items];
+	let sorted;
+
+	// const copyYears = copy.map(
+	// 	(el) =>
+	// 		Date.parse(el.item.first_air_date) || Date.parse(el.item.release_date)
+	// );
+
+	// let years = [];
+	// for (let date of copyYears) {
+	// 	let year = new Date(date).getFullYear();
+	// 	if (!isNaN(year)) {
+	// 		years.push(year);
+	// 	}
+	// }
+
+	// years.sort((a, b) => b - a);
+
+	if (mediaType === "movie") {
+		sorted = copy.sort(
+			(a, b) =>
+				b.item.release_date.slice(0, 4) - a.item.release_date.slice(0, 4)
+		);
+	} else if (mediaType === "tv") {
+		sorted = copy.sort(
+			(a, b) =>
+				b.item.first_air_date.slice(0, 4) - a.item.first_air_date.slice(0, 4)
+		);
+	} else if (mediaType === "all") {
+		console.log("currently have no idea how to do this");
+		sorted = copy;
+	}
+
+	return sorted;
+};
+
+export const sortByName = (items) => {
+	// const names = items.map((el) => el.item.name || el.item.title);
+	// console.log(names.sort((a, b) => b.item.name - a.item.name));
+	// return names.sort();
+};
+
 //  rating box utils
 export const setRating = (favorites, id, rating) => {
-	// const favorites = useSelector((state) => state.favorites.watched);
 	let userRating;
 	if (favorites.some((el) => el.id === id)) {
 		const fav = favorites
