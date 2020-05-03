@@ -1,31 +1,3 @@
-// @mixin button($paddingy, $paddingx, $fontSize) {
-// 	button {
-// 		border: 2px solid $color-primary;
-// 		border-radius: 5px;
-// 		background-color: $color-primary;
-// 		color: $color-white;
-// 		cursor: pointer;
-// 		font-size: $fontSize;
-// 		font-weight: bold;
-// 		letter-spacing: 1px;
-// 		transition: 0.6s;
-// 		padding: $paddingy $paddingx;
-
-// 		&:hover {
-// 			background-color: $color-white;
-// 			color: $color-primary;
-// 		}
-
-// 		&:focus {
-// 			outline: none;
-// 		}
-
-// 		&:active {
-// 			opacity: 0.7;
-// 		}
-// 	}
-// }
-
 @function set-text-color($color) {
 	@if (lightness($color) > 70) {
 		@return $font-color-black;
@@ -66,7 +38,7 @@
 		-moz-transform: scale(0.95);
 		-ms-transform: scale(0.95);
 		-o-transform: scale(0.95);
-		background-color: darken($color-pink, 10%);
+		background-color: darken($color-red, 10%);
 	}
 }
 
@@ -77,7 +49,7 @@
 		font-weight: 500;
 		font-size: 0.7em;
 		letter-spacing: 2px;
-		@include set-background($color-pink);
+		@include set-background($color-red);
 		padding: 10px 25px;
 		text-transform: uppercase;
 		transition: 0.3s ease-in-out;
@@ -88,7 +60,7 @@
 			-moz-transform: scale(0.95);
 			-ms-transform: scale(0.95);
 			-o-transform: scale(0.95);
-			@include set-background(darken($color-pink, 10%));
+			@include set-background(darken($color-red, 10%));
 		}
 
 		@include mediaQuery(sm) {
@@ -114,26 +86,26 @@
 
 $breakpoints: (
 	xs: (
-		min-width: 412px
+		min-width: 412px,
 	),
 	sm: (
-		min-width: 640px
+		min-width: 640px,
 	),
 	md: (
-		min-width: 800px
+		min-width: 800px,
 	),
 	lg: (
-		min-width: 1024px
+		min-width: 1024px,
 	),
 	xl: (
-		min-width: 1200px
+		min-width: 1200px,
 	),
 	xxl: (
-		min-width: 1440px
+		min-width: 1440px,
 	),
 	xxxl: (
-		min-width: 1600px
-	)
+		min-width: 1600px,
+	),
 );
 
 @mixin mediaQuery($breakpoint) {
@@ -144,9 +116,6 @@ $breakpoints: (
 			@content;
 		}
 	} @else {
-		// @media (min-width: $value) {
-		// 	@content;
-		// }
 		@warn 'bad breakpoint';
 	}
 }
@@ -184,18 +153,6 @@ $breakpoints: (
 }
 
 @mixin container {
-	// border: 1px solid black;
 	transition: all 0.3s linear;
 	padding: 0.7rem;
-
-	// &:hover {
-	// 	-webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
-	// 		inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
-	// 	-moz-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
-	// 		inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
-	// 	-o-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
-	// 		inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
-	// 	box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
-	// 		inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
-	// }
 }

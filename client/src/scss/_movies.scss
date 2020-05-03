@@ -1,11 +1,17 @@
 // movies
 .movies {
 	grid-area: movies;
-	display: flex;
 
-	flex-wrap: wrap;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	// width: 100%;
+	display: grid;
+	padding: initial;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 280px));
+	grid-gap: 2em;
+}
+
+@media only screen and (min-width: 211px) and (max-width: 767px) {
+	.movies {
+		justify-items: center;
+		grid-template-columns: repeat(auto-fit, minmax(150px, 100%));
+		padding: none;
+	}
 }

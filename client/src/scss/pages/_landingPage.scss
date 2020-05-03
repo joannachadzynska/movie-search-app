@@ -3,8 +3,6 @@
 	// background-repeat: no-repeat;
 	// background-size: cover;
 	text-align: center;
-	background-color: #8487c8;
-	background-image: linear-gradient(244deg, #8487c8 0%, #f491ad 100%);
 
 	height: 100%;
 	width: 100%;
@@ -39,7 +37,7 @@
 		a {
 			@extend %btn;
 			@extend %menuLink;
-			@include set-background($color-pink);
+			@include set-background($color-red);
 			font-size: 2rem;
 			@include mediaQuery(md) {
 				font-size: calc(1rem + 2vmin);

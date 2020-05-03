@@ -6,10 +6,8 @@ footer {
 	align-items: center;
 
 	p {
-		font-size: 1.125rem;
-
 		@include mediaQuery(xs) {
-			font-size: calc(10px + 2vmin);
+			font-size: calc(10px + 1vmin);
 		}
 	}
 }

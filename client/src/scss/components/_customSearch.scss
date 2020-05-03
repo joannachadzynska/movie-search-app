@@ -6,7 +6,7 @@
 	width: 100%;
 
 	.search__input {
-		border: 2px solid $color-primary;
+		border: none;
 		min-width: 170px;
 		padding: 10px 15px;
 		font-size: 1rem;
@@ -15,8 +15,8 @@
 
 	.search__btn {
 		@extend %btn;
-		background-color: $color-primary;
-		color: set-text-color($color-primary);
+		background-color: $color-red;
+		color: set-text-color($color-red);
 		padding: 0;
 		margin: 0;
 	}

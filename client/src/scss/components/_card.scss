@@ -1,85 +1,111 @@
 // movie card
 
 .cards__item {
-	background-color: #fff;
-	display: flex;
-	justify-content: center;
-	padding: 1rem;
-	width: 100%;
+	// background-color: #fff;
+	// display: flex;
+	// justify-content: center;
+	// padding: 1rem;
+	// width: 100%;
+	list-style: none;
+	color: #000000;
+	// @include mediaQuery(sm) {
+	// 	width: 50%;
+	// }
 
-	@include mediaQuery(sm) {
-		width: 50%;
-	}
+	// @include mediaQuery(md) {
+	// 	width: 33.33%;
+	// }
 
-	@include mediaQuery(md) {
-		width: 33.33%;
-	}
+	// @include mediaQuery(lg) {
+	// 	width: 25%;
+	// }
 
-	@include mediaQuery(lg) {
-		width: 25%;
-	}
-
-	@include mediaQuery(xl) {
-		width: 20%;
-	}
+	// @include mediaQuery(xl) {
+	// 	width: 20%;
+	// }
 }
 
 .card {
-	border-radius: 0.25rem;
-	box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+	background-color: white;
+	max-width: 280px;
+	height: 550px;
+	border-radius: 8px;
+	overflow: hidden;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	align-items: center;
-	position: relative;
+	img {
+		width: 100%;
+		height: auto;
+	}
 }
 
-// card overlay
-.card-image__container {
-	width: 180px;
-	height: 280px;
-
-	a img {
-		max-width: 100%;
-		height: auto;
-		border-radius: 5px;
-		vertical-align: middle;
+@media only screen and (min-width: 411px) and (max-width: 767px) {
+	.card {
+		background-color: white;
+		max-width: 300px;
+		background: #fff;
+		border-radius: 8px;
 		overflow: hidden;
 	}
 }
 
 // card block
 .card__block {
-	padding: 1rem;
 	display: flex;
-	flex: 1 1 auto;
-	flex-direction: column;
-	text-align: center;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1em;
+	text-align: left;
+
+	.card__meta {
+		overflow: hidden;
+	}
 
 	.card__title {
-		width: 180px;
-		font-weight: 300;
-		font-size: 1rem;
-		line-height: 1.1;
-		margin-bottom: 1.25rem;
-		word-break: break-all;
-
-		@include mediaQuery(sm) {
-			font-size: calc(0.75rem + 2vmin);
-		}
+		flex: 1;
+		font-size: 1.4rem;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		padding-right: 0.5rem;
+		// @include mediaQuery(sm) {
+		// 	font-size: calc(0.75rem + 2vmin);
+		// }
 	}
 
-	.card__text {
+	.card__date {
+		color: gray;
 		font-size: 1rem;
-		flex: 1 1 auto;
-		font-size: 0.875rem;
-		line-height: 1.5;
-		margin-bottom: 1.25rem;
-
-		@include mediaQuery(sm) {
-			font-size: calc(0.5rem + 2vmin);
-		}
 	}
 
-	@include ratingBox;
+	.card__button {
+		border: 1px solid orange;
+		background-color: white;
+		font-size: 1em;
+		padding: 0.25em 1em;
+		border-radius: 8%;
+		color: orange;
+		font-size: 1.2em;
+	}
+
+	// .card__text {
+	// 	font-size: 1rem;
+	// 	flex: 1 1 auto;
+	// 	font-size: 0.875rem;
+	// 	line-height: 1.5;
+	// 	margin-bottom: 1.25rem;
+
+	// 	@include mediaQuery(sm) {
+	// 		font-size: calc(0.5rem + 2vmin);
+	// 	}
+	// }
+}
+
+.card__rating--star {
+	height: 5vh;
+}
+
+.card__rating--star > span > span {
+	width: 1.5rem;
 }

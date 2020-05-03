@@ -21,6 +21,7 @@
 		font-weight: bold;
 		font-size: 1.25em;
 		margin-right: auto;
+		color: #e50914;
 	}
 }
 
@@ -51,7 +52,7 @@
 				@extend %menuLink;
 				background-image: linear-gradient(
 					120deg,
-					lighten($color-pink, 5%) 0%,
+					lighten($color-red, 5%) 0%,
 					lighten($color-primary, 10%) 100%
 				);
 				background-repeat: no-repeat;
